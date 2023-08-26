@@ -13,6 +13,10 @@
     emacs-wrapped = pkgs.emacsWithPackagesFromUsePackage {
       config = ./config/emacs.el;
       package = pkgs.emacs-unstable;
+      extraEmacsPackages = epkgs: [
+        epkgs.ripgrep
+        epkgs.fzf
+      ];
       # Sets config to be used as default init file
       # defaultInitFile = true;
     };
