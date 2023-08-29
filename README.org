@@ -1,0 +1,36 @@
+* Simple Emacs flake
+
+a simple emacs flake using [[https://github.com/nix-community/emacs-overlay][emacs-overlay]]
+
+** Adding external packages
+
+#+BEGIN_SRC nix
+  emacs-wrapped = with pkgs; symlinkJoin {
+    name = "emacs";
+    buildInputs = [ makeWrapper ];
+    paths = [ emacs-unwrapped ];
+    postBuild = let 
+    path = [
+      ## Add your external packages here ##
+      fzf
+      ripgrep
+      ...
+    ];
+    ...
+#+END_SRC
+
+** Adding/editing config files
+
+- Config files should be placed in =./config/=.
+- Nix will read the directory in lexicographical order.
+  - So, to edit load order of config files, edit the names of the files if necessary.
+
+- Packages are added using use-package.
+  - Ex.
+    #+BEGIN_SRC elisp
+      (use magit
+	   :ensure t)
+    #+END_SRC
+- Packages are not added directly through use-package, and the config is parsed with Nix first.
+  - Nix does not support unicode characters, so make sure not to have any in your config files.
+
