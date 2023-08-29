@@ -1,3 +1,4 @@
+; test
 (setq inhibit-startup-message nil
       visible-bell nil)
 (setq ring-bell-function 'ignore)
