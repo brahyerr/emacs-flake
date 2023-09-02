@@ -35,6 +35,7 @@
   :ensure t
   :config
   (ivy-mode 1))
+(global-set-key "\C-s" 'swiper)
 
 ; (use-package all-the-icons
 ;  :if (display-graphic-p))
@@ -48,7 +49,7 @@
   (load-theme 'doom-ir-black t)
 
   ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
+  ; (doom-themes-visual-bell-config)
   ;; Enable custom neotree theme (all-the-icons must be installed!)
   ; (doom-themes-neotree-config)
   ;; or for treemacs users

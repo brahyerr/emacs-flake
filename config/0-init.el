@@ -9,9 +9,13 @@
 (set-fringe-mode 10)
 (menu-bar-mode -1)
 
+; Relative line number
+(display-line-numbers-mode t)
+(setq display-line-numbers 'relative)
+(defvar my-linum-current-line-number 0)
+
 (set-face-attribute 'default nil :font "lemonscaled" :height 200)
 (set-fontset-font t nil (font-spec :size 20 :name "CozetteHiDpi"))
 
 ; (require 'lsp-mode)
 (add-hook 'css-mode-hook #'lsp)
-
