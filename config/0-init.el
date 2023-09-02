@@ -1,4 +1,4 @@
-:; test
+; test
 (setq inhibit-startup-message nil
       visible-bell nil)
 (setq ring-bell-function 'ignore)
@@ -11,7 +11,7 @@
 
 ; Relative line number
 (global-display-line-numbers-mode 1)
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 'absolute)
 (defvar my-linum-current-line-number 0)
 
 (set-face-attribute 'default nil :font "lemonscaled" :height 200)
