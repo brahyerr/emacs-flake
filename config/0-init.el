@@ -10,8 +10,8 @@
 (menu-bar-mode -1)
 
 ; Relative line number
-(display-line-numbers-mode t)
-(setq display-line-numbers 'relative)
+(global-display-line-numbers-mode 1)
+(setq display-line-numbers-type 'relative)
 (defvar my-linum-current-line-number 0)
 
 (set-face-attribute 'default nil :font "lemonscaled" :height 200)
