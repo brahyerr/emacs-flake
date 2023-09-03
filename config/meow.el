@@ -40,7 +40,16 @@
    '("e" . previous-window-any-frame)
       ; Buffer management
    '("q" . kill-buffer-and-window))
+  (meow-motion-overwrite-define-key
+   ;; Alt modifier binds
+   '("M-e" . next-buffer)
+   '("M-q" . previous-buffer))
   (meow-normal-define-key
+   ;; Alt modifier binds
+   '("M-e" . next-buffer)
+   '("M-q" . previous-buffer)
+   '("M-d" . next-window-any-frame)
+   '("M-a" . previous-window-any-frame)
    '("0" . meow-expand-0)
    '("9" . meow-expand-9)
    '("8" . meow-expand-8)
