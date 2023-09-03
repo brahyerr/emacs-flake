@@ -49,7 +49,12 @@
   {
     packages.${system}.default = emacs-wrapped;
     devShells.${system}.default = pkgs.mkShell {
-      buildInputs = [ emacs-wrapped ];
+    #   buildInputs = [ emacs-wrapped ];
+      # shellHook = let 
+      #   kill_emacs-daemon = pkgs.writeShellScript "kill_emacs-daemon"
+      #   ''emacsclient -e "(kill-emacs)"'';
+      # in
+      # "${kill_emacs-daemon}";
     };
   };
 }
