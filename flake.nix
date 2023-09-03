@@ -21,7 +21,7 @@
         (builtins.concatStringsSep "\n" 
           (map (path: builtins.readFile path) 
             (lib.filesystem.listFilesRecursive ./config)));
-      package = pkgs.emacs-unstable;
+      package = pkgs.emacs-pgtk;  # Experimental wayland support
       extraEmacsPackages = epkgs: [
         epkgs.ripgrep
         epkgs.fzf

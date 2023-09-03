@@ -1,14 +1,16 @@
 (setq visible-bell t
       inhibit-splash-screen t
-      ring-bell-function 'ignore)
+      ring-bell-function 'ignore
+      select-enable-primary t
+      x-select-request-type 'text/plain\;charset=utf-8)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
 (set-fringe-mode 10)
 (menu-bar-mode -1)
 
-(set-frame-parameter nil 'alpha-background 80)
-(add-to-list 'default-frame-alist '(alpha-background . 80))
+(set-frame-parameter nil 'alpha-background 85)
+(add-to-list 'default-frame-alist '(alpha-background . 85))
 
 ; Relative line number
 (global-display-line-numbers-mode 1)
