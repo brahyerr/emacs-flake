@@ -1,3 +1,16 @@
+;; Some custom functions for meow
+(use-package meow :ensure t)
+(defun meow-beginning-of-line ()
+  "Shortcut to go to the beginning of a line."
+  (interactive)
+  (meow-beginning-of-thing '?l))
+
+(defun meow-end-of-line ()
+  "Shortcut to go to the end of a line."
+  (interactive)
+  (meow-end-of-thing '?l))
+
+;; Meow keymap
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-overwrite-define-key
@@ -20,7 +33,13 @@
    '("9" . meow-digit-argument)
    '("0" . meow-digit-argument)
    '("/" . meow-keypad-describe-key)
-   '("?" . meow-cheatsheet))
+   '("?" . meow-cheatsheet)
+   ; Window management
+   '("w" . delete-window)
+   '("d" . next-window-any-frame)
+   '("e" . previous-window-any-frame)
+      ; Buffer management
+   '("q" . kill-buffer-and-window))
   (meow-normal-define-key
    '("0" . meow-expand-0)
    '("9" . meow-expand-9)
@@ -38,6 +57,8 @@
    '("." . meow-bounds-of-thing)
    '("[" . meow-beginning-of-thing)
    '("]" . meow-end-of-thing)
+   '("_" . meow-beginning-of-line)
+   '("$" . meow-end-of-line)
    '("a" . meow-append)
    '("A" . meow-open-below)
    '("b" . meow-back-word)
@@ -90,6 +111,6 @@
    '("'" . repeat)
    '(":" . "M-x")
    '("<escape>" . ignore)))
-(require 'meow)
+;; (require 'meow)
 (meow-setup)
 (meow-global-mode 1)

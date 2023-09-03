@@ -1,10 +1,6 @@
-;; (add-to-list 'load-path (expand-file-name "./" (file-name-directory load-file-name)))
-;; (load "init.el")
-
-(use-package meow :ensure t)
 (use-package magit :ensure t)
 (use-package command-log-mode :ensure t)
-(use-package linum-relative :ensure t)
+;; (use-package linum-relative :ensure t)
 
 ;;; Languages
 
@@ -40,13 +36,22 @@
 ; (use-package all-the-icons
 ;  :if (display-graphic-p))
 
-(use-package doom-themes
-  :ensure t
-  :config
+(use-package org-modern
+  :ensure t)
+(with-eval-after-load 'org (global-org-modern-mode))
+
+(use-package color-theme-sanityinc-tomorrow
+  :ensure t)
+(color-theme-sanityinc-tomorrow--define-theme bright)
+(color-theme-sanityinc-tomorrow-bright)
+
+; (use-package doom-themes
+;  :ensure nil
+;  :config
   ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-acario-dark t)
+;  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+;        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+;  (load-theme 'doom-acario-dark nil)
 
   ;; Enable flashing mode-line on errors
   ; (doom-themes-visual-bell-config)
@@ -56,4 +61,4 @@
   ; (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
   ; (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+;  (doom-themes-org-config))

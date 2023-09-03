@@ -1,13 +1,14 @@
-; test
-(setq inhibit-startup-message nil
-      visible-bell nil)
-(setq ring-bell-function 'ignore)
-(load-theme 'wombat t)
+(setq visible-bell t
+      inhibit-splash-screen t
+      ring-bell-function 'ignore)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
 (set-fringe-mode 10)
 (menu-bar-mode -1)
+
+(set-frame-parameter nil 'alpha-background 80)
+(add-to-list 'default-frame-alist '(alpha-background . 80))
 
 ; Relative line number
 (global-display-line-numbers-mode 1)
