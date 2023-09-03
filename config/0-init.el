@@ -29,27 +29,27 @@
 (set-face-attribute 'tooltip nil :font "lemonscaled" :height 200)
 
 (defun set-fonts-for-emacsclient ()
-	(set-fontset-font t nil (font-spec :size 20 :name "lemonscaled"))
-	(set-fontset-font t 'unicode (font-spec :name "CozetteHiDpi") nil 'append)
-	(set-frame-font "lemonscaled" nil t)
-	  ;; Set the variable pitch face
-	(set-face-attribute 'variable-pitch nil :font "Terminus" :height 20 :weight 'regular)
-	;; CJK fonts
-	(set-fontset-font t 'han (font-spec :name "WenQuanYi Bitmap Song") nil)
-	(set-fontset-font t 'kana (font-spec :name "WenQuanYi Bitmap Song") nil)
-	(set-fontset-font t 'hangul (font-spec :name "WenQuanYi Bitmap Song") nil))
+  (add-to-list 'default-frame-alist '(font . "lemonscaled-20"))
+  (set-fontset-font t 'unicode (font-spec :size 20 :name "lemonscaled") nil)
+  (set-fontset-font t 'unicode (font-spec :name "CozetteHiDpi") nil 'append)
+  (set-frame-font "lemonscaled" nil t)
+  ;; Set the variable pitch face
+  (set-face-attribute 'variable-pitch nil :font "Terminus" :height 20 :weight 'regular)
+  ;; CJK fonts
+  (set-fontset-font t 'han (font-spec :name "WenQuanYi Bitmap Song") nil)
+  (set-fontset-font t 'kana (font-spec :name "WenQuanYi Bitmap Song") nil)
+  (set-fontset-font t 'hangul (font-spec :name "WenQuanYi Bitmap Song") nil))
 
-(set-fontset-font t nil (font-spec :size 20 :name "lemonscaled"))
-; (set-fontset-font t nil (font-spec :size 20 :name "CozetteHiDpi"))
-(add-to-list 'default-frame-alist '(font . "lemonscaled-20"))
-(set-fontset-font t 'unicode (font-spec :name "lemonscaled") nil)
-(set-fontset-font t 'unicode (font-spec :name "CozetteHiDpi") nil 'append)
+(add-hook 'server-after-make-frame-hook 'set-fonts-for-emacsclient)
+
+; (set-fontset-font t nil (font-spec :size 20 :name "lemonscaled"))
+; (add-to-list 'default-frame-alist '(font . "lemonscaled-20"))
+; (set-fontset-font t 'unicode (font-spec :name "lemonscaled") nil)
+; (set-fontset-font t 'unicode (font-spec :name "CozetteHiDpi") nil 'append)
 ;; CJK fonts
-(set-fontset-font t 'han (font-spec :name "WenQuanYi Bitmap Song") nil)
-(set-fontset-font t 'kana (font-spec :name "WenQuanYi Bitmap Song") nil)
-(set-fontset-font t 'hangul (font-spec :name "WenQuanYi Bitmap Song") nil)
-
-(add-hook 'server-after-make-frame-hook #'set-fonts-for-emacsclient)
+; (set-fontset-font t 'han (font-spec :name "WenQuanYi Bitmap Song") nil)
+; (set-fontset-font t 'kana (font-spec :name "WenQuanYi Bitmap Song") nil)
+; (set-fontset-font t 'hangul (font-spec :name "WenQuanYi Bitmap Song") nil)
 
 ; (require 'lsp-mode)
 (add-hook 'css-mode-hook #'lsp)
