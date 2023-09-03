@@ -16,8 +16,8 @@
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Background opacity
-(set-frame-parameter nil 'alpha-background 85)
-(add-to-list 'default-frame-alist '(alpha-background . 85))
+(set-frame-parameter nil 'alpha-background 90)
+(add-to-list 'default-frame-alist '(alpha-background . 90))
 
 ;; Relative line number
 (global-display-line-numbers-mode 1)
@@ -25,9 +25,12 @@
 (defvar my-linum-current-line-number 0)
 
 ;; Fonts
-(set-face-attribute 'default nil :font "lemonscaled" :height 200)
+;; (set-face-attribute 'default nil :font "lemonscaled" :height 200)
 (set-fontset-font t nil (font-spec :size 20 :name "CozetteHiDpi"))
 (add-to-list 'default-frame-alist '(font . "lemonscaled-20"))
+(set-fontset-font "fontset-startup" 'unicode (font-spec :name "lemonscaled") nil)
+(set-fontset-font "fontset-startup" 'unicode (font-spec :name "CozetteHiDpi") nil 'append)
+(set-face-attribute 'default nil :height 200)
 
 ; (require 'lsp-mode)
 (add-hook 'css-mode-hook #'lsp)

@@ -27,12 +27,6 @@
 ; (setq-default web-mode-code-indent-offset 2)
 ; (setq-default typescript-indent-level 2)
 
-(use-package ivy
-  :ensure t
-  :config
-  (ivy-mode 1))
-(global-set-key "\C-s" 'swiper)
-
 ; (use-package all-the-icons
 ;  :if (display-graphic-p))
 
@@ -44,6 +38,27 @@
   :ensure t)
 (color-theme-sanityinc-tomorrow--define-theme bright)
 (color-theme-sanityinc-tomorrow-bright)
+
+(use-package rainbow-delimiters
+  :ensure t)
+  ;; Hook prog-mode to rainbow-delimiters-mode
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+(use-package which-key
+  :ensure t
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 0.3))
+
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
+(setq doom-modeline-height 10
+      doom-modeline-unicode-fallback nil
+      doom-modeline-modal-modern-icon nil
+      doom-modeline-icon nil
+      nerd-icons-font-family "CozetteHiDpi")
 
 ; (use-package doom-themes
 ;  :ensure nil

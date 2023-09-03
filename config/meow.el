@@ -34,16 +34,22 @@
    '("0" . meow-digit-argument)
    '("/" . meow-keypad-describe-key)
    '("?" . meow-cheatsheet)
-   ; Window management
-   '("w" . delete-window)
+   ; isearch
+   '("s" . "C-s")
+   ; find-file
+   '("f" . "C-x C-f")
+   ; Window and buffer management
+   '("w" . kill-buffer)
    '("d" . next-window-any-frame)
    '("e" . previous-window-any-frame)
-      ; Buffer management
-   '("q" . kill-buffer-and-window))
+   '("q" . delete-window)
+   '("Q" . kill-buffer-and-window))
   (meow-motion-overwrite-define-key
-   ;; Alt modifier binds
+   '(":" . "M-x")
    '("M-e" . next-buffer)
-   '("M-q" . previous-buffer))
+   '("M-q" . previous-buffer)
+   '("M-d" . next-window-any-frame)
+   '("M-a" . previous-window-any-frame))
   (meow-normal-define-key
    ;; Alt modifier binds
    '("M-e" . next-buffer)
