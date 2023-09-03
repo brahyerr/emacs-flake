@@ -19,6 +19,7 @@
 
 (set-face-attribute 'default nil :font "lemonscaled" :height 200)
 (set-fontset-font t nil (font-spec :size 20 :name "CozetteHiDpi"))
+(add-to-list 'default-frame-alist '(font . "lemonscaled-20"))
 
 ; (require 'lsp-mode)
 (add-hook 'css-mode-hook #'lsp)

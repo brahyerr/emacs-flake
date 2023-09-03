@@ -104,6 +104,7 @@
    '("Y" . meow-sync-grab)
    '("z" . meow-pop-selection)
    '("'" . repeat)
+   '(":" . "M-x")
    '("<escape>" . ignore)))
 ;; (require 'meow)
 (meow-setup)
