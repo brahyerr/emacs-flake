@@ -1,3 +1,15 @@
+;; Hydra keybinds
+(use-package hydra
+  :ensure t)
+
+(defhydra hydra-resize (global-map "C-SPC")
+    "Resize windows."
+    ("h" shrink-window-horizontally "shrink-h")
+    ("j" shrink-window "shrink-v")
+    ("k" enlarge-window "enlarge-v")
+    ("l" enlarge-window-horizontally "enlarge-h")
+    ("q" nil "quit" :exit t))
+
 ;; Some custom functions for meow
 (use-package meow :ensure t)
 (defun meow-beginning-of-line ()
@@ -10,7 +22,7 @@
   (interactive)
   (meow-end-of-thing '?l))
 
-;; Meow keymap
+;; meow keymap
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-overwrite-define-key
@@ -49,13 +61,24 @@
    '("M-e" . next-buffer)
    '("M-q" . previous-buffer)
    '("M-d" . next-window-any-frame)
-   '("M-a" . previous-window-any-frame))
+   '("M-a" . previous-window-any-frame)
+   '("M-]" . next-buffer)
+   '("M-[" . previous-buffer)
+   '("M-l" . next-window-any-frame)  ;; originally downcase-word
+   '("M-h" . previous-window-any-frame))  ;; originally mark-paragraph
   (meow-normal-define-key
    ;; Alt modifier binds
    '("M-e" . next-buffer)
    '("M-q" . previous-buffer)
    '("M-d" . next-window-any-frame)
    '("M-a" . previous-window-any-frame)
+   '("(" . scroll-down-command)
+   '(")" . scroll-up-command)
+   '("M-]" . next-buffer)
+   '("M-[" . previous-buffer)
+   '("M-l" . next-window-any-frame)  ;; originally downcase-word
+   '("M-h" . previous-window-any-frame)  ;; originally mark-paragraph
+   '("M-f" . window-swap-states)  ;; originally forward-word
    '("0" . meow-expand-0)
    '("9" . meow-expand-9)
    '("8" . meow-expand-8)
@@ -114,8 +137,7 @@
    '("W" . meow-mark-symbol)
    '("x" . meow-line)
    '("X" . meow-goto-line)
-   ;; '("y" . meow-save)
-   '("y" . kill-ring-save)
+   '("y" . meow-save)
    '("Y" . meow-sync-grab)
    '("z" . meow-pop-selection)
    '("'" . repeat)
