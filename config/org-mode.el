@@ -33,7 +33,7 @@
 
 ;; Variable header font sizes
 (add-hook 'org-mode-hook (lambda ()
-(set-face-attribute 'org-level-1 nil                   :family "Terminus" :font "Terminus" :height 320 :weight 'bold)
+(set-face-attribute 'org-level-1 nil                   :family "Terminus" :font "Terminus" :height 300 :weight 'bold)
 (set-face-attribute 'org-level-2 nil                   :family "CozetteHiDpi" :font "CozetteHiDpi" :height 300)
 (set-face-attribute 'org-level-3 nil                   :family "lemonscaled" :font "lemonscaled" :height 200)
 (set-face-attribute 'org-level-4 nil                   :family "lemonscaled" :font "lemonscaled" :height 200)

@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
-
+    
   outputs = { self, nixpkgs, emacs-overlay, ... }:
   let
     system = "x86_64-linux";
@@ -27,6 +27,8 @@
         epkgs.fzf
         epkgs.lsp-mode
         epkgs.lsp-ui
+        epkgs.corfu
+        epkgs.ement # matrix client
       ];
     };
       # Wrap the emacs binary with extra external programs to be available in its PATH
@@ -39,6 +41,23 @@
             fzf
             ripgrep
             fd
+
+            # nix
+            nil
+
+            # python
+            pyright
+
+            # HTML/CSS/JSON/ESLint
+            vscode-langservers-extracted
+            
+            # yaml
+            yaml-language-server
+
+            # debugging
+            valgrind
+            gdb
+            cgdb
           ];
         in ''
           wrapProgram $out/bin/emacs \

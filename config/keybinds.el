@@ -1,3 +1,14 @@
+;; Native keybinds
+(keymap-global-set "M-e" 'next-buffer)
+(keymap-global-set "M-q" 'previous-buffer)
+(keymap-global-set "M-d" 'next-window-any-frame)
+(keymap-global-set "M-a" 'previous-window-any-frame)
+(keymap-global-set "M-]" 'next-buffer)
+(keymap-global-set "M-[" 'previous-buffer)
+(keymap-global-set "M-l" 'next-window-any-frame)  ;; originally downcase-word
+(keymap-global-set "M-h" 'previous-window-any-frame)  ;; originally mark-paragraph
+(keymap-global-set "M-f" 'window-swap-states)
+
 ;; Hydra keybinds
 (use-package hydra
   :ensure t)
@@ -10,7 +21,8 @@
     ("l" enlarge-window-horizontally "enlarge-h")
     ("q" nil "quit" :exit t))
 
-;; Some custom functions for meow
+;;;;;; Meow function/keybindings ;;;;;;
+
 (use-package meow :ensure t)
 (defun meow-beginning-of-line ()
   "Shortcut to go to the beginning of a line."
@@ -22,15 +34,34 @@
   (interactive)
   (meow-end-of-thing '?l))
 
-;; Some help from Brontosaurus
-;; Consider using use-region-p instead if there are issues
+;; This function had some help from Brontosaurus
+;; Consider using use-region-p instead if there are issues with this function
+
+(setq vim-append-p nil)
 (defun meow-append-plus (unused-arg)
+  "Modify meow-append to behave more like vim's append."
   (interactive "P")
   (if (region-active-p)
       (meow-append)
     (progn
       (forward-char)
-      (meow-append))))
+      (meow-append)
+      (setq vim-append-p t))))
+
+(defun meow-insert-exit-plus ()
+  "Modify meow-insert-exit to move back one character after exitting
+   when insert mode is started by pressing the append key."
+  (interactive)
+  (corfu-quit)
+    (if (equal t vim-append-p)
+	(progn
+	 (backward-char)
+	 (meow-insert-exit)
+	 (setq vim-append-p nil))
+      (meow-insert-exit)))
+
+;; Replace a keymap defined in meow-insert-state-keymap
+(define-key meow-insert-state-keymap [escape] #'meow-insert-exit-plus)
 
 ;; meow keymap
 (defun meow-setup ()
@@ -67,28 +98,19 @@
    '("q" . delete-window)
    '("Q" . kill-buffer-and-window))
   (meow-motion-overwrite-define-key
-   '(":" . "M-x")
-   '("M-e" . next-buffer)
-   '("M-q" . previous-buffer)
-   '("M-d" . next-window-any-frame)
-   '("M-a" . previous-window-any-frame)
-   '("M-]" . next-buffer)
-   '("M-[" . previous-buffer)
-   '("M-l" . next-window-any-frame)  ;; originally downcase-word
-   '("M-h" . previous-window-any-frame))  ;; originally mark-paragraph
+   '(":" . "M-x"))
   (meow-normal-define-key
-   ;; Alt modifier binds
    '("M-e" . next-buffer)
    '("M-q" . previous-buffer)
    '("M-d" . next-window-any-frame)
    '("M-a" . previous-window-any-frame)
-   '("(" . scroll-down-command)
-   '(")" . scroll-up-command)
    '("M-]" . next-buffer)
    '("M-[" . previous-buffer)
    '("M-l" . next-window-any-frame)  ;; originally downcase-word
    '("M-h" . previous-window-any-frame)  ;; originally mark-paragraph
-   '("M-f" . window-swap-states)  ;; originally forward-word
+   '("M-f" . window-swap-states)
+   '("(" . scroll-down-command)
+   '(")" . scroll-up-command)
    '("0" . meow-expand-0)
    '("9" . meow-expand-9)
    '("8" . meow-expand-8)
@@ -142,7 +164,7 @@
    '("t" . meow-till)
    '("u" . meow-undo)
    '("U" . meow-undo-in-selection)
-   '("v" . meow-visit)
+   '("v" . consult-line-plus)
    '("w" . meow-mark-word)
    '("W" . meow-mark-symbol)
    '("x" . meow-line)
@@ -156,3 +178,4 @@
 ;; (require 'meow)
 (meow-setup)
 (meow-global-mode 1)
+(add-hook 'term-mode-hook 'meow--disable)
