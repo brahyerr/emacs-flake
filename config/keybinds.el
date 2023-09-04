@@ -22,6 +22,16 @@
   (interactive)
   (meow-end-of-thing '?l))
 
+;; Some help from Brontosaurus
+;; Consider using use-region-p instead if there are issues
+(defun meow-append-plus (unused-arg)
+  (interactive "P")
+  (if (region-active-p)
+      (meow-append)
+    (progn
+      (forward-char)
+      (meow-append))))
+
 ;; meow keymap
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
@@ -97,7 +107,7 @@
    '("]" . meow-end-of-thing)
    '("_" . meow-beginning-of-line)
    '("$" . meow-end-of-line)
-   '("a" . meow-append)
+   '("a" . meow-append-plus)
    '("A" . meow-open-below)
    '("b" . meow-back-word)
    '("B" . meow-back-symbol)
