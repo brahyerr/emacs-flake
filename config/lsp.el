@@ -1,3 +1,15 @@
+;; Languages
+
+;; Nix
+;; (use-package nix-mode
+;;   :ensure t  
+;;   :mode "\\.nix\\'")
+;; 
+;; ;; Python
+;; (use-package python
+;;   :ensure t
+;;   :mode ("\\.py\\'" . python-mode))
+;; 
 ;; Eglot hooks
 (use-package eglot
   :hook
@@ -29,10 +41,6 @@
 ;;                :compositeLiteralFields t
 ;;                :compositeLiteralTypes t
 ;;                :constantValues t)))))
-
-;; lsp-ui
-(use-package lsp-ui
-  :ensure t)
 
 (defun resize-help-window ()
   (interactive)

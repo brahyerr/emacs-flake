@@ -22,53 +22,58 @@
           (map (path: builtins.readFile path) 
             (lib.filesystem.listFilesRecursive ./config)));
       package = pkgs.emacs-pgtk;  # Experimental wayland support
-      extraEmacsPackages = epkgs: [
-        epkgs.treesit-auto
-        epkgs.ripgrep
-        epkgs.fzf
-        epkgs.lsp-mode
-        epkgs.lsp-ui
-        epkgs.corfu
-        epkgs.ement # matrix client
+      extraEmacsPackages = epkgs: with epkgs; [
+        treesit-auto
+        ripgrep
+        fzf
+        # lsp-mode
+        lsp-ui
+        corfu
+        ement # matrix client
+	
+	      # nix
+	      nix-mode
+	      nixos-options
+	      nix-modeline
       ];
     };
-      # Wrap the emacs binary with extra external programs to be available in its PATH
-      emacs-wrapped = with pkgs; symlinkJoin {
-        name = "emacs";
-        buildInputs = [ makeWrapper ];
-        paths = [ emacs-unwrapped ];
-        postBuild = let 
-          path = [
-            fzf
-            ripgrep
-            fd
+    # Wrap the emacs binary with extra external programs to be available in its PATH
+    emacs-wrapped = with pkgs; symlinkJoin {
+      name = "emacs";
+      buildInputs = [ makeWrapper ];
+      paths = [ emacs-unwrapped ];
+      postBuild = let 
+        path = [
+          fzf
+          ripgrep
+          fd
 
-            # nix
-            nil
+          # nix
+          nil
 
-            # python
-            python3
-            pyright
+          # python
+          python3
+          pyright
 
-            # java
-            java-language-server
+          # java
+          java-language-server
 
-            # HTML/CSS/JSON/ESLint
-            vscode-langservers-extracted
-            
-            # yaml
-            yaml-language-server
+          # HTML/CSS/JSON/ESLint
+          vscode-langservers-extracted
+          
+          # yaml
+          yaml-language-server
 
-            # debugging
-            valgrind
-            gdb
-            cgdb
-          ];
-        in ''
-          wrapProgram $out/bin/emacs \
-            --prefix PATH : ${lib.makeBinPath path}
-        '';
-      };
+          # debugging
+          valgrind
+          gdb
+          cgdb
+        ];
+      in ''
+        wrapProgram $out/bin/emacs \
+          --prefix PATH : ${lib.makeBinPath path}
+      '';
+    };
   in
   {
     packages.${system}.default = emacs-wrapped;

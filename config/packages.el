@@ -1,18 +1,9 @@
-(use-package magit :ensure t)
 (use-package command-log-mode :ensure t)
-;; (use-package linum-relative :ensure t)
-
-;;; Languages
-
-;; Nix
-(use-package nix-mode
-  :ensure t  
-  :mode "\\.nix\\'")
-
-;; Python
-(use-package python
-  :ensure t
-  :mode ("\\.py\\'" . python-mode))
+(setq global-command-log-mode nil)
+;; (defun local/toggle-command-log-mode-and-buffer ()
+;;   (interactive)
+;;   (clm/toggle-command-log-buffer)
+;;   (global-command-log-mode 'toggle))
 
 ;; Formatting
 ; (setq-default indent-tabs-mode nil)

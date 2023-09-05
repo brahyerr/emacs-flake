@@ -9,6 +9,9 @@
 (keymap-global-set "M-h" 'previous-window-any-frame)  ;; originally mark-paragraph
 (keymap-global-set "M-f" 'window-swap-states)
 
+;; command-log keybinds
+;; (keymap-global-set "C-c o" 'local/toggle-command-log-mode-and-buffer)
+
 ;; Hydra keybinds
 (use-package hydra
   :ensure t)
