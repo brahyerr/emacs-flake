@@ -14,7 +14,7 @@
 
       # Create the init config file by concatenating the the contents of the files in ./config/
       # This method of reading ./config/ reads the directory in lexicographical order.
-      # Basically, if you want the contents of one particualr file to load earlier, edit its name.
+      # Basically, if you want the contents of one particular file to load earlier, edit its name.
 
       defaultInitFile = true;
       config = with pkgs; writeText "emacs-config.el" 
@@ -47,7 +47,11 @@
             nil
 
             # python
+            python3
             pyright
+
+            # java
+            java-language-server
 
             # HTML/CSS/JSON/ESLint
             vscode-langservers-extracted
