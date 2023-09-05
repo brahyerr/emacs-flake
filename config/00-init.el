@@ -64,7 +64,7 @@ If the new path's directories does not exist, create them."
 ;; Save history
 (savehist-mode t)
 
-;; Fonts with an attempt to set a fallback font
+;; Set fonts for emacsclient
 (set-face-attribute 'default nil :font "lemonscaled" :height 200)
 (set-face-attribute 'tooltip nil :font "lemonscaled" :height 200)
 
@@ -87,14 +87,3 @@ If the new path's directories does not exist, create them."
   (set-fontset-font t 'hangul (font-spec :name "WenQuanYi Bitmap Song") nil))
 
 (add-hook 'server-after-make-frame-hook 'set-fonts-for-emacsclient)
-
-; (set-fontset-font t nil (font-spec :size 20 :name "lemonscaled"))
-; (add-to-list 'default-frame-alist '(font . "lemonscaled-20"))
-; (set-fontset-font t 'unicode (font-spec :name "lemonscaled") nil)
-; (set-fontset-font t 'unicode (font-spec :name "CozetteHiDpi") nil 'append)
-;; CJK fonts
-; (set-fontset-font t 'han (font-spec :name "WenQuanYi Bitmap Song") nil)
-; (set-fontset-font t 'kana (font-spec :name "WenQuanYi Bitmap Song") nil)
-; (set-fontset-font t 'hangul (font-spec :name "WenQuanYi Bitmap Song") nil)
-
-; (require 'lsp-mode)

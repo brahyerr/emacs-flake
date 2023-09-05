@@ -23,6 +23,18 @@
 
 ;;;;;; Meow function/keybindings ;;;;;;
 
+;; For the following function, regexp-search-ring cannot be nil. If it is, then
+;; set it to a new list with element "a"
+(if (equal nil regexp-search-ring)
+    (setq regexp-search-ring (cons "a" regexp-search-ring)))
+  
+(defun meow-visit-plus ()
+  (interactive)
+  (if (region-active-p) (meow-cancel-selection))
+  (consult-line)
+  ;; (setq regexp-search-ring (cons (car consult--line-history) regexp-search-ring)))
+  (setcar regexp-search-ring (car consult--line-history)))
+
 (use-package meow :ensure t)
 (defun meow-beginning-of-line ()
   "Shortcut to go to the beginning of a line."
@@ -164,7 +176,7 @@
    '("t" . meow-till)
    '("u" . meow-undo)
    '("U" . meow-undo-in-selection)
-   '("v" . consult-line-plus)
+   '("v" . meow-visit-plus)
    '("w" . meow-mark-word)
    '("W" . meow-mark-symbol)
    '("x" . meow-line)

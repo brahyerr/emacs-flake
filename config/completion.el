@@ -67,8 +67,8 @@
   ;; Recommended: Enable Corfu globally.
   ;; This is recommended since Dabbrev can be used globally (M-/).
 ;; See also `global-corfu-modes'.
-(keymap-global-set "M-n" 'corfu-next)
-(keymap-global-set "M-p" 'corfu-previous)
+;; (keymap-global-set "M-n" 'corfu-next)
+;; (keymap-global-set "M-p" 'corfu-previous)
 (global-corfu-mode t)
 ;; Enable corfu popupinfo
 (corfu-popupinfo-mode t)
