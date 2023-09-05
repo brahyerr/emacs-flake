@@ -23,6 +23,7 @@
             (lib.filesystem.listFilesRecursive ./config)));
       package = pkgs.emacs-pgtk;  # Experimental wayland support
       extraEmacsPackages = epkgs: [
+        epkgs.treesit-auto
         epkgs.ripgrep
         epkgs.fzf
         epkgs.lsp-mode

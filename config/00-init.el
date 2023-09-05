@@ -1,3 +1,12 @@
+;; Startup speed, annoyance suppression
+(setq gc-cons-threshold 10000000)
+(setq byte-compile-warnings '(not obsolete))
+(setq warning-suppress-log-types '((comp) (bytecomp)))
+
+;; Silence stupid startup message
+(setq inhibit-startup-echo-area-message (user-login-name))
+
+(setq frame-resize-pixelwise t)
 (setq visible-bell t
       inhibit-splash-screen t
       ring-bell-function 'ignore
@@ -9,8 +18,21 @@
 (set-fringe-mode 10)
 (menu-bar-mode -1)
 
-;; Initialize personal-keybindings variable for packages to use custom keybindings."
+;; (setq sentence-end-double-space nil)
 
+;; Don't litter file system with *~ backup files; put them all inside
+;; ~/.emacs.d/backup or wherever
+(defun bedrock--backup-file-name (fpath)
+  "Return a new file path of a given file path.
+If the new path's directories does not exist, create them."
+  (let* ((backupRootDir "~/.emacs.d/emacs-backup/")
+         (filePath (replace-regexp-in-string "[A-Za-z]:" "" fpath )) ; remove Windows driver letter in path
+         (backupFilePath (replace-regexp-in-string "//" "/" (concat backupRootDir filePath "~") )))
+    (make-directory (file-name-directory backupFilePath) (file-name-directory backupFilePath))
+    backupFilePath))
+(setq make-backup-file-name-function 'bedrock--backup-file-name)
+
+;; Initialize personal-keybindings variable for packages to use custom keybindings."
 (defvar personal-keybindings
   (list))
 
@@ -24,10 +46,20 @@
 (set-frame-parameter nil 'alpha-background 88)
 (add-to-list 'default-frame-alist '(alpha-background . 88))
 
-;; Relative line number
+;; UI Enhancements
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'absolute)
 (defvar my-linum-current-line-number 0)
+
+(setq column-number-mode t)                      ; Show column as well
+
+(setq x-underline-at-descent-line nil)           ; Prettier underlines
+(setq switch-to-buffer-obey-display-actions t)   ; Make switching buffers more consistent
+
+(setq-default show-trailing-whitespace nil)      ; By default, don't underline trailing spaces
+(setq-default indicate-buffer-boundaries 'left)  ; Show buffer top and bottom in the margin
+(blink-cursor-mode -1)                                ; Steady cursor
+(pixel-scroll-precision-mode 1)                         ; Smooth scrolling
 
 ;; Save history
 (savehist-mode t)

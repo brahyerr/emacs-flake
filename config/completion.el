@@ -66,8 +66,14 @@
 
   ;; Recommended: Enable Corfu globally.
   ;; This is recommended since Dabbrev can be used globally (M-/).
-  ;; See also `global-corfu-modes'.
+;; See also `global-corfu-modes'.
+(keymap-global-set "M-n" 'corfu-next)
+(keymap-global-set "M-p" 'corfu-previous)
 (global-corfu-mode t)
+;; Enable corfu popupinfo
+(corfu-popupinfo-mode t)
+(setq corfu-popupinfo-delay '(0.25 . 0.1))
+(setq corfu-popupinfo-hide nil)
 
 (defun corfu-enable-in-minibuffer ()
   "Enable Corfu in the minibuffer if `completion-at-point' is bound."
@@ -82,7 +88,10 @@
 (use-package emacs
   :init
   ;; TAB cycle if there are only few candidates
-  (setq completion-cycle-threshold 5)
+  (setq completion-cycle-threshold 1)
+  (setq completions-detailed t)
+  (setq completions-group t)
+  (setq completion-auto-select 'second-tab)
 
   ;; Emacs 28: Hide commands in M-x which do not apply to the current mode.
   ;; Corfu commands are hidden, since they are not supposed to be used via M-x.
@@ -169,6 +178,8 @@
          :map minibuffer-local-map
          ("M-s" . consult-history)                 ;; orig. next-matching-history-element
          ("M-r" . consult-history))                ;; orig. previous-matching-history-element
+  :config
+  (setq consult-narrow-key "<")
 
   ;; Enable automatic preview at point in the *Completions* buffer. This is
   ;; relevant when you use the default completion UI.
