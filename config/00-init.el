@@ -1,5 +1,6 @@
 ;; Startup speed, annoyance suppression
-(setq gc-cons-threshold 10000000)
+;; (setq gc-cons-threshold 10000000)
+(setq gc-cons-threshold 5000000)
 (setq byte-compile-warnings '(not obsolete))
 (setq warning-suppress-log-types '((comp) (bytecomp)))
 
@@ -7,7 +8,7 @@
 (setq inhibit-startup-echo-area-message (user-login-name))
 
 (setq frame-resize-pixelwise t)
-(setq visible-bell t
+(setq visible-bell nil
       inhibit-splash-screen t
       ring-bell-function 'ignore
       select-enable-primary t
@@ -17,6 +18,10 @@
 (tooltip-mode -1)
 (set-fringe-mode 10)
 (menu-bar-mode -1)
+(setq-default left-margin-width 2
+	      right-margin-width 2)
+
+;; (add-to-list 'mode-line-format '("  "))
 
 ;; (setq sentence-end-double-space nil)
 
@@ -39,7 +44,8 @@ If the new path's directories does not exist, create them."
 ;; Disable line numbers for some modes
 (dolist (mode '(term-mode-hook
 		shell-mode-hook
-		eshell-mode-hook))
+		eshell-mode-hook
+		org-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Background opacity
@@ -48,7 +54,7 @@ If the new path's directories does not exist, create them."
 
 ;; UI Enhancements
 (global-display-line-numbers-mode 1)
-(setq display-line-numbers-type 'absolute)
+(setq display-line-numbers-type 'visual)
 (defvar my-linum-current-line-number 0)
 
 (setq column-number-mode t)                      ; Show column as well

@@ -1,8 +1,4 @@
 ;; Native keybinds
-(keymap-global-set "M-e" 'next-buffer)
-(keymap-global-set "M-q" 'previous-buffer)
-(keymap-global-set "M-d" 'next-window-any-frame)
-(keymap-global-set "M-a" 'previous-window-any-frame)
 (keymap-global-set "M-]" 'next-buffer)
 (keymap-global-set "M-[" 'previous-buffer)
 (keymap-global-set "M-l" 'next-window-any-frame)  ;; originally downcase-word
@@ -13,8 +9,7 @@
 ;; (keymap-global-set "C-c o" 'local/toggle-command-log-mode-and-buffer)
 
 ;; Hydra keybinds
-(use-package hydra
-  :ensure t)
+(use-package hydra)
 
 (defhydra hydra-resize (global-map "C-SPC")
     "Resize windows."
@@ -38,7 +33,7 @@
   ;; (setq regexp-search-ring (cons (car consult--line-history) regexp-search-ring)))
   (setcar regexp-search-ring (car consult--line-history)))
 
-(use-package meow :ensure t)
+(use-package meow)
 (defun meow-beginning-of-line ()
   "Shortcut to go to the beginning of a line."
   (interactive)
@@ -115,17 +110,13 @@
   (meow-motion-overwrite-define-key
    '(":" . "M-x"))
   (meow-normal-define-key
-   '("M-e" . next-buffer)
-   '("M-q" . previous-buffer)
-   '("M-d" . next-window-any-frame)
-   '("M-a" . previous-window-any-frame)
    '("M-]" . next-buffer)
    '("M-[" . previous-buffer)
    '("M-l" . next-window-any-frame)  ;; originally downcase-word
    '("M-h" . previous-window-any-frame)  ;; originally mark-paragraph
    '("M-f" . window-swap-states)
-   '("(" . scroll-down-command)
-   '(")" . scroll-up-command)
+   ;; '("(" . scroll-down-command)
+   ;; '(")" . scroll-up-command)
    '("0" . meow-expand-0)
    '("9" . meow-expand-9)
    '("8" . meow-expand-8)

@@ -22,20 +22,8 @@
           (map (path: builtins.readFile path) 
             (lib.filesystem.listFilesRecursive ./config)));
       package = pkgs.emacs-pgtk;  # Experimental wayland support
-      extraEmacsPackages = epkgs: with epkgs; [
-        treesit-auto
-        ripgrep
-        fzf
-        # lsp-mode
-        lsp-ui
-        corfu
-        ement # matrix client
-	
-	      # nix
-	      nix-mode
-	      nixos-options
-	      nix-modeline
-      ];
+      extraEmacsPackages = import ./epkgs.nix;
+      alwaysEnsure = true;
     };
     # Wrap the emacs binary with extra external programs to be available in its PATH
     emacs-wrapped = with pkgs; symlinkJoin {
@@ -47,12 +35,12 @@
           fzf
           ripgrep
           fd
+          xdg-utils
 
           # nix
           nil
 
           # python
-          python3
           pyright
 
           # java
@@ -64,6 +52,10 @@
           # yaml
           yaml-language-server
 
+          # tex
+          # pandoc
+          # texlive.combined.scheme-medium
+          
           # debugging
           valgrind
           gdb
