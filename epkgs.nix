@@ -3,8 +3,8 @@
         ripgrep
         fzf
 
-	# theme
-	color-theme-sanityinc-tomorrow
+	      # theme
+	      color-theme-sanityinc-tomorrow
         mood-line
 
         # completion framework
@@ -28,18 +28,21 @@
         # lsp
         eglot
         lsp-ui
+
+        # common lisp
+        sly
 	
-	# nix
-	nix-mode
-	nixos-options
-	nix-modeline
+	      # nix
+	      nix-mode
+	      nixos-options
+	      nix-modeline
 
         # tex
         latex-preview-pane
         latex-math-preview
         auctex
 
-	# org-mode
+	      # org-mode
         visual-fill-column
         org-modern
         org-roam

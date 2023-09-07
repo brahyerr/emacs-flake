@@ -17,7 +17,8 @@
       # Basically, if you want the contents of one particular file to load earlier, edit its name.
 
       defaultInitFile = true;
-      config = with pkgs; writeText "emacs-config.el" 
+      config = with pkgs;
+        writeText "emacs-config.el" 
         (builtins.concatStringsSep "\n" 
           (map (path: builtins.readFile path) 
             (lib.filesystem.listFilesRecursive ./config)));
@@ -51,6 +52,9 @@
           
           # yaml
           yaml-language-server
+
+          # common lisp
+          # sbcl
 
           # tex
           # pandoc
