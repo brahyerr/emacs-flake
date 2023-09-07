@@ -1,3 +1,3 @@
-(use-package direnv
-  :config
-  (add-to-list 'warning-suppress-types '(direnv)))
+(use-package direnv)
+;; (setq 'warning-suppress-types '(direnv)))
+(setq warning-suppress-types '(direnv))
