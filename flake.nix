@@ -17,11 +17,10 @@
       # Basically, if you want the contents of one particular file to load earlier, edit its name.
 
       defaultInitFile = true;
-      config = with pkgs;
-        writeText "emacs-config.el" 
+      config = pkgs.writeText "emacs-config.el" 
         (builtins.concatStringsSep "\n" 
           (map (path: builtins.readFile path) 
-            (lib.filesystem.listFilesRecursive ./config)));
+            (pkgs.lib.filesystem.listFilesRecursive ./config)));
       package = pkgs.emacs-pgtk;  # Experimental wayland support
       extraEmacsPackages = import ./epkgs.nix;
       alwaysEnsure = true;
@@ -35,35 +34,19 @@
         path = [
           fzf
           ripgrep
-          fd
-          xdg-utils
+          # fd
+          # xdg-utils
 
-          # nix
+          ### language servers
           nil
-
-          # python
           pyright
-
-          # java
           java-language-server
-
-          # HTML/CSS/JSON/ESLint
-          vscode-langservers-extracted
-          
-          # yaml
+          vscode-langservers-extracted   # HTML/CSS/JSON/ESLint
           yaml-language-server
 
-          # common lisp
-          # sbcl
-
-          # tex
+          ### tex
           # pandoc
           # texlive.combined.scheme-medium
-          
-          # debugging
-          #valgrind
-          #gdb
-          #cgdb
         ];
       in ''
         wrapProgram $out/bin/emacs \
@@ -74,7 +57,8 @@
   {
     packages.${system}.default = emacs-wrapped;
     devShells.${system}.default = pkgs.mkShell {
-      buildInputs = [ emacs-wrapped ];
+      # buildInputs = [ emacs-wrapped ];
+      packages = [ emacs-wrapped ];
     };
   };
 }
