@@ -18,12 +18,19 @@
 (tooltip-mode -1)
 (set-fringe-mode 10)
 (menu-bar-mode -1)
-(setq-default left-margin-width 2
-	      right-margin-width 2)
+;; (setq-default left-margin-width 2
+;; 	      right-margin-width 2)
 
 ;; (add-to-list 'mode-line-format '("  "))
 
 ;; (setq sentence-end-double-space nil)
+
+;; Command logging
+(setq global-command-log-mode nil)
+;; (defun local/toggle-command-log-mode-and-buffer ()
+;;   (interactive)
+;;   (clm/toggle-command-log-buffer)
+;;   (global-command-log-mode 'toggle))
 
 ;; Don't litter file system with *~ backup files; put them all inside
 ;; ~/.emacs.d/backup or wherever
@@ -49,8 +56,12 @@ If the new path's directories does not exist, create them."
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Background opacity
-(set-frame-parameter nil 'alpha-background 88)
-(add-to-list 'default-frame-alist '(alpha-background . 88))
+(set-frame-parameter nil 'alpha-background 95)
+(add-to-list 'default-frame-alist '(alpha-background . 95))
+
+;; Frame margins
+(set-frame-parameter nil 'internal-border-width 16)
+(add-to-list 'default-frame-alist '(internal-border-width . 16))
 
 ;; UI Enhancements
 (global-display-line-numbers-mode 1)

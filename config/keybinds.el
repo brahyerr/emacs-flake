@@ -8,6 +8,13 @@
 ;; command-log keybinds
 ;; (keymap-global-set "C-c o" 'local/toggle-command-log-mode-and-buffer)
 
+;; Which key does what?
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 0.3))
+
 ;; Hydra keybinds
 (use-package hydra)
 
