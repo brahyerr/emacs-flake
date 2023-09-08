@@ -43,9 +43,10 @@
         auctex
 
 	      # org-mode
-        visual-fill-column
-        org-modern
+        org
         org-roam
+        org-modern
+        visual-fill-column
 
         # extra
         rainbow-delimiters
