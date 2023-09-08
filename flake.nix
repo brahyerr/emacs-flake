@@ -61,9 +61,9 @@
           # texlive.combined.scheme-medium
           
           # debugging
-          valgrind
-          gdb
-          cgdb
+          #valgrind
+          #gdb
+          #cgdb
         ];
       in ''
         wrapProgram $out/bin/emacs \

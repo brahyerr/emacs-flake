@@ -42,7 +42,7 @@
 ;;                :compositeLiteralTypes t
 ;;                :constantValues t)))))
 
-(defun resize-help-window ()
-  (interactive)
-  (enlarge-window ( - 15 (window-body-height))))
-(add-hook 'flymake-diagnostic-functions 'resize-help-window)
+;; (defun resize-help-window ()
+;;   (interactive)
+;;   (enlarge-window ( - 15 (window-body-height))))
+;; (add-hook 'flymake-diagnostic-functions 'resize-help-window)
