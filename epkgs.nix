@@ -44,7 +44,7 @@
         auctex
 
 	      # org-mode
-        org
+        # org  <-- using external org pkg appears to make emacs freeze when opening .org
         org-roam
         org-modern
         visual-fill-column
