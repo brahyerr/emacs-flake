@@ -4,7 +4,8 @@
         fzf
 
 	      # theme
-	      color-theme-sanityinc-tomorrow
+	      #color-theme-sanityinc-tomorrow
+        timu-caribbean-theme
         mood-line
 
         # completion framework
