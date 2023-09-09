@@ -38,6 +38,7 @@
           # xdg-utils
 
           ### language servers
+          ccls
           nil
           pyright
           java-language-server
