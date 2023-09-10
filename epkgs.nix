@@ -1,5 +1,6 @@
 epkgs: with epkgs; [
-  treesit-auto
+  # treesit-auto
+  treesit-grammars.with-all-grammars
   ripgrep
   fzf
 
