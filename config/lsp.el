@@ -81,7 +81,8 @@
 ;; (use-package lsp-treemacs)
 
 ;; lsp-mode has a stupid aggressive indent that deletes code
-(setq lsp-enable-indentation nil)
+(setq lsp-enable-indentation nil
+      lsp-enable-on-type-formatting nil)
 
 ;; Set java indent
 (add-hook 'java-mode-hook
