@@ -87,14 +87,14 @@ If the new path's directories does not exist, create them."
 (set-face-attribute 'tooltip nil :font "lemonscaled" :height 200)
 
 (add-to-list 'default-frame-alist '(font . "lemonscaled-20"))
-(set-fontset-font t 'unicode (font-spec :size 20 :name "lemonscaled") nil)
+(set-fontset-font t 'unicode (font-spec :name "lemonscaled") nil)
 ;; (set-fontset-font t 'unicode (font-spec :name "Noto Color Emoji") nil 'append)
 (set-fontset-font t 'unicode (font-spec :name "CozetteHiDpi") nil 'append)
 (set-fontset-font t 'unicode (font-spec :name "JetBrainsMono") nil 'append)
 (set-fontset-font t 'unicode (font-spec :name "DejaVu Sans Mono") nil 'append)
 (set-frame-font "lemonscaled" nil t)
 ;; Set the variable pitch face
-(set-face-attribute 'variable-pitch nil :font "Terminus" :height 20 :weight 'regular)
+(set-face-attribute 'variable-pitch nil :font "Terminus" :height 200 :weight 'regular)
 ;; CJK fonts
 (set-fontset-font t 'unicode (font-spec :name "WenQuanYi Bitmap Song") nil 'append)
 (set-fontset-font t 'unicode (font-spec :name "WenQuanYi Bitmap Song") nil 'append)
@@ -106,7 +106,7 @@ If the new path's directories does not exist, create them."
 
 (defun set-fonts-for-emacsclient ()
   (add-to-list 'default-frame-alist '(font . "lemonscaled-20"))
-  (set-fontset-font t 'unicode (font-spec :size 20 :name "lemonscaled") nil)
+  (set-fontset-font t 'unicode (font-spec :name "lemonscaled") nil)
   (set-fontset-font t 'unicode (font-spec :name "Noto Color Emoji") nil 'append)
   (set-fontset-font t 'unicode (font-spec :name "CozetteHiDpi") nil 'append)
   (set-fontset-font t 'unicode (font-spec :name "JetBrainsMono") nil 'append)
