@@ -3,9 +3,9 @@ epkgs: with epkgs; [
   treesit-grammars.with-all-grammars
   ripgrep
   fzf
-
-	### theme
-	# color-theme-sanityinc-tomorrow
+  
+  ### theme
+  # color-theme-sanityinc-tomorrow
   timu-caribbean-theme
   mood-line
 
@@ -39,17 +39,17 @@ epkgs: with epkgs; [
   ### common lisp
   sly
 	
-	### nix
-	nix-mode
-	nixos-options
-	nix-modeline
+  ### nix
+  nix-mode
+  nixos-options
+  nix-modeline
 
   ### tex
   latex-preview-pane
   latex-math-preview
   auctex
 
-	### org packages
+  ### org packages
   # org  <-- using external org pkg appears to make emacs freeze when opening .org
   org-roam
   org-modern
