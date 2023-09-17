@@ -2,6 +2,8 @@
 
 a simple emacs flake using [[https://github.com/nix-community/emacs-overlay][emacs-overlay]]
 
+If all you want is boilerplate for a reproducible config, check out the [[https://github.com/brahyerr/emacs-flake/tree/base][base]] branch.
+
 ** Adding external packages
 
 #+BEGIN_SRC nix
