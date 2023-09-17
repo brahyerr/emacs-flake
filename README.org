@@ -56,3 +56,7 @@ a simple emacs flake using [[https://github.com/nix-community/emacs-overlay][ema
 - ~lsp-mode~ is used for the Java configuration, but other configured languages use ~eglot~.
 - The ~inferior-lisp-program~ is set to ~sbcl~, but it is not included in this flake, so you need to get it on your own.
 - I'm new to emacs, so some questionable stuff is to be expected. :^)
+
+** Credits
+- Parts of the configs were taken from [[https://git.sr.ht/~ashton314/emacs-bedrock][emacs-bedrock]], and the System Crafters Emacs From Scratch video series helped a lot.
+- Fonts were taken from [[https://github.com/slavfox/Cozette][slavfox/cozette]] and [[https://github.com/cmvnd/fonts][cmvnd/fonts]].
