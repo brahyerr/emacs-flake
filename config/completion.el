@@ -71,7 +71,7 @@
 (global-corfu-mode t)
 ;; Enable corfu popupinfo
 (corfu-popupinfo-mode t)
-(setq corfu-popupinfo-delay '(0.25 . 0.1))
+(setq corfu-popupinfo-delay '(0.35 . 0.2))
 (setq corfu-popupinfo-hide nil)
 
 (defun corfu-enable-in-minibuffer ()

@@ -17,20 +17,44 @@ a simple emacs flake using [[https://github.com/nix-community/emacs-overlay][ema
       ...
     ];
     ...
+  };
 #+END_SRC
 
 ** Adding/editing config files
 
-- Config files should be placed in =./config/=.
-- Nix will read the directory in lexicographical order.
-  - So, to edit load order of config files, edit the names of the files if necessary.
+- Emacs lisp configs should be placed in =./config/=.
+- Nix will read the directory in lexicographical order, concatenate the contents of each config, and build an init file.
+  - So, to edit load order of config files, edit the names of the files when necessary.
+  - For example, my init file is named ~00-init.el~.
 
-- Packages are added using use-package.
+** Adding emacs packages
+- Packages are added either by adding them in epkgs.nix, or through use-package in an elisp file.
+- This flake has ~alwaysEnsure~ set to true, so ~:ensure t~ is not needed to be explicitly set.
+  
   - Ex.
+    #+begin_src nix
+      epkgs: with epkgs; [
+        ### Add your emacs packages here ###
+        treesit-grammars.with-all-grammars
+        ...
+      ];
+    #+end_src
+    ... or ...
     #+BEGIN_SRC elisp
-      (use magit
-	   :ensure t)
+      (use-package magit
+        :custom
+        (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
     #+END_SRC
-- Packages are not added directly through use-package, and the config is parsed with Nix first.
-  - Nix does not support unicode characters, so make sure not to have any in your config files.
+    
+- Packages are not added directly through use-package; the config is parsed with Nix first, and Nix will download the packages.
+  - Nix does not support parsing unicode characters, so make sure not to have any in your elisp config files.
 
+** Notes and quirks
+- I set custom font faces in my config, which include upscaled versions of some fonts.
+  - I've included them in the repo, if you want to use them yourself. The rest of the fonts you will need to install through other means.
+  - Otherwise, remove the custom font settings.
+- The ~inferior-lisp-program~ is set to ~sbcl~, but it is not included in this flake, so you need to get it on your own.
+- Despite having a Java lsp-mode configuration, the language server for Java needs to be installed *outside* of this config.
+  - I've tried to create a decent enough config using eglot instead of lsp-mode, but it hasn't worked out (yet).
+  - Though, every other language configured in this flake will use eglot.
+- I'm new to emacs, so some questionable stuff is to be expected. :^)
