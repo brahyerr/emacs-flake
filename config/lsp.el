@@ -18,13 +18,18 @@
    (html-mode . eglot-ensure)
    (python-mode . eglot-ensure)
    (c-mode . eglot-ensure)
-   (c++-mode . eglot-ensure)
-   (java-mode . eglot-ensure)))
+   (c++-mode . eglot-ensure)))
+   ;; (java-mode . eglot-ensure)))
+(setq eglot-sync-connect 1)
+;; (use-package eglot-java)
 
-(with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-               '(java-mode . ("java-language-server"))))
-  
+;; Use java-language-server instead of jdtls
+;; (with-eval-after-load 'eglot
+;;   (add-to-list 'eglot-server-programs
+;;                '(java-mode . ("java-language-server"))))
+   
+(use-package flycheck)
+
 ;; (add-hook 'nix-mode-hook 'eglot-ensure)
 ;; (add-hook 'c-mode-hook 'eglot-ensure)
 ;; (add-hook 'java-mode-hook 'eglot-ensure
@@ -46,3 +51,43 @@
 ;;   (interactive)
 ;;   (enlarge-window ( - 15 (window-body-height))))
 ;; (add-hook 'flymake-diagnostic-functions 'resize-help-window)
+
+;;;; Java LSP config ;;;;
+
+(use-package lsp-mode
+  :hook
+  ((lsp-mode . lsp-enable-which-key-integration))
+  :config
+  (setq lsp-completion-enable-additional-text-edit nil))
+(use-package lsp-ui)
+(use-package lsp-java
+  :config
+  (add-hook 'java-mode-hook 'lsp))
+(use-package dap-mode
+  :after
+  lsp-mode
+  :config
+  (dap-auto-configure-mode))
+(use-package dap-java
+  :ensure nil)
+;; (use-package lsp-treemacs)
+
+;; lsp-mode has a stupid aggressive indent that deletes code
+(setq lsp-enable-indentation nil)
+
+;; Set java indent
+(add-hook 'java-mode-hook
+          (lambda ()
+            (setq tab-width 8)))
+(setq lsp-java-autobuild-enabled nil)
+
+;; Fix compile escape codes
+(add-hook 'compilation-filter-hook
+	  (lambda () (ansi-color-apply-on-region (point-min) (point-max))))
+
+;; Add jdt-language-server from PATH
+;; (lsp-register-client
+;;  (make-lsp-client
+;;   :new-connection (lsp-stdio-connection "jdt-language-server")
+;;   :major-modes '(java-mode)
+;;   :server-id 'jdt-language-server))

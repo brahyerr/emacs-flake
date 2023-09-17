@@ -4,12 +4,12 @@ epkgs: with epkgs; [
   ripgrep
   fzf
 
-	# theme
-	#color-theme-sanityinc-tomorrow
+	### theme
+	# color-theme-sanityinc-tomorrow
   timu-caribbean-theme
   mood-line
 
-  # completion framework
+  ### completion framework
   vertico
   corfu
   cape
@@ -18,42 +18,46 @@ epkgs: with epkgs; [
   yasnippet-snippets
   consult
   marginalia
-  #embark
+  # embark
 
-  # descriptive help/documentation
+  ### descriptive help/documentation
   helpful
 
-  # keybinds
+  ### keybinds
   hydra
   meow
+  which-key
 
-  # lsp
+  ### lsp
   eglot
+  # eglot-java
+  lsp-mode
+  lsp-java
   lsp-ui
+  dap-mode
 
-  # common lisp
+  ### common lisp
   sly
 	
-	# nix
+	### nix
 	nix-mode
 	nixos-options
 	nix-modeline
 
-  # tex
+  ### tex
   latex-preview-pane
   latex-math-preview
   auctex
 
-	# org-mode
+	### org packages
   # org  <-- using external org pkg appears to make emacs freeze when opening .org
   org-roam
   org-modern
   visual-fill-column
 
-  # extra
+  ### extra
   rainbow-delimiters
   command-log-mode
-  which-key
   ement # matrix client
 
 ]
