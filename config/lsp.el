@@ -27,7 +27,8 @@
 ;; (with-eval-after-load 'eglot
 ;;   (add-to-list 'eglot-server-programs
 ;;                '(java-mode . ("java-language-server"))))
-   
+
+(advice-add 'eglot-completion-at-point :around #'cape-wrap-buster) ;; make corfu work better with eglot
 (use-package flycheck)
 
 ;; (add-hook 'nix-mode-hook 'eglot-ensure)
@@ -55,10 +56,17 @@
 ;;;; Java LSP config ;;;;
 
 (use-package lsp-mode
-  :hook
-  ((lsp-mode . lsp-enable-which-key-integration))
+  :custom
+  (lsp-completion-provider :none) ;; we use Corfu!
+  :init
+  (defun my/lsp-mode-setup-completion ()
+    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+          '(flex))) ;; Configure flex
   :config
-  (setq lsp-completion-enable-additional-text-edit nil))
+  (setq lsp-completion-enable-additional-text-edit nil)
+  :hook
+  ((lsp-mode . lsp-enable-which-key-integration)
+   (lsp-completion-mode . my/lsp-mode-setup-completion)))
 (use-package lsp-ui)
 (use-package lsp-java
   :config

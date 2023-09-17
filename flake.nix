@@ -48,13 +48,7 @@
             ripgrep
             
             ### language servers
-            # ccls
-            clang-tools
             nil
-            pyright
-            # jdtls does not seem to work with lsp-mode or eglot, and exits on startup with exit code 13
-            # jdt-language-server
-            # java-language-server
             vscode-langservers-extracted   # HTML/CSS/JSON/ESLint
             yaml-language-server
 
