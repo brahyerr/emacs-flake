@@ -63,7 +63,8 @@
     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
           '(flex))) ;; Configure flex
   :config
-  (setq lsp-completion-enable-additional-text-edit nil)
+  (setq lsp-completion-enable-additional-text-edit nil
+	lsp-headerline-breadcrumb-enable nil)
   :hook
   ((lsp-mode . lsp-enable-which-key-integration)
    (lsp-completion-mode . my/lsp-mode-setup-completion)))
