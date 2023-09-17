@@ -63,7 +63,8 @@
     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
           '(flex))) ;; Configure flex
   :config
-  (setq lsp-completion-enable-additional-text-edit nil)
+  (setq lsp-completion-enable-additional-text-edit nil
+	lsp-headerline-breadcrumb-enable nil)
   :hook
   ((lsp-mode . lsp-enable-which-key-integration)
    (lsp-completion-mode . my/lsp-mode-setup-completion)))
@@ -81,7 +82,8 @@
 ;; (use-package lsp-treemacs)
 
 ;; lsp-mode has a stupid aggressive indent that deletes code
-(setq lsp-enable-indentation nil)
+(setq lsp-enable-indentation nil
+      lsp-enable-on-type-formatting nil)
 
 ;; Set java indent
 (add-hook 'java-mode-hook
