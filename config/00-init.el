@@ -94,7 +94,7 @@ If the new path's directories does not exist, create them."
 (set-fontset-font t 'unicode (font-spec :name "DejaVu Sans Mono") nil 'append)
 (set-frame-font "lemonscaled" nil t)
 ;; Set the variable pitch face
-(set-face-attribute 'variable-pitch nil :font "Terminus" :height 200 :weight 'regular)
+(set-face-attribute 'variable-pitch nil :font "Terminus" :height 160 :weight 'regular)
 ;; CJK fonts
 (set-fontset-font t 'unicode (font-spec :name "WenQuanYi Bitmap Song") nil 'append)
 (set-fontset-font t 'unicode (font-spec :name "WenQuanYi Bitmap Song") nil 'append)
@@ -113,7 +113,7 @@ If the new path's directories does not exist, create them."
   (set-fontset-font t 'unicode (font-spec :name "DejaVu Sans Mono") nil 'append)
   (set-frame-font "lemonscaled" nil t)
   ;; Set the variable pitch face
-  (set-face-attribute 'variable-pitch nil :font "Terminus" :height 20 :weight 'regular)
+  (set-face-attribute 'variable-pitch nil :font "Terminus" :height 160 :weight 'regular)
   ;; CJK fonts
   (set-fontset-font t 'unicode (font-spec :name "WenQuanYi Bitmap Song") nil 'append)
   (set-fontset-font t 'unicode (font-spec :name "WenQuanYi Bitmap Song") nil 'append)
