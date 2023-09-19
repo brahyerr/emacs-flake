@@ -123,6 +123,8 @@
    '("M-[" . previous-buffer)
    '("M-l" . next-window-any-frame)  ;; originally downcase-word
    '("M-h" . previous-window-any-frame)  ;; originally mark-paragraph
+   '("M-d" . next-window-any-frame)  ;; originally kill-word
+   '("M-a" . previous-window-any-frame)  ;; originally backward-sentence
    '("M-f" . window-swap-states)
    ;; '("(" . scroll-down-command)
    ;; '(")" . scroll-up-command)
