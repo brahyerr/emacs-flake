@@ -3,6 +3,8 @@
 (keymap-global-set "M-[" 'previous-buffer)
 (keymap-global-set "M-l" 'next-window-any-frame)  ;; originally downcase-word
 (keymap-global-set "M-h" 'previous-window-any-frame)  ;; originally mark-paragraph
+(keymap-global-set "M-d" 'next-window-any-frame)  ;; originally kill-word
+(keymap-global-set "M-a" 'previous-window-any-frame)  ;; originally backward-sentence
 (keymap-global-set "M-f" 'window-swap-states)
 
 ;; command-log keybinds
