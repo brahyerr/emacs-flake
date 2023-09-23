@@ -7,6 +7,11 @@
 (keymap-global-set "M-a" 'previous-window-any-frame)  ;; originally backward-sentence
 (keymap-global-set "M-f" 'window-swap-states)
 
+;; Dired keymaps
+(define-key dired-mode-map (kbd "J") 'dired-find-alternate-file)
+(define-key dired-mode-map (kbd "K") (lambda () (interactive) (find-alternate-file "..")))
+(define-key dired-mode-map (kbd "C-u") 'dired-up-directory)
+
 ;; command-log keybinds
 ;; (keymap-global-set "C-c o" 'local/toggle-command-log-mode-and-buffer)
 

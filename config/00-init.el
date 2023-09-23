@@ -50,7 +50,8 @@ If the new path's directories does not exist, create them."
   (list))
 
 ;; Disable line numbers for some modes
-(dolist (mode '(term-mode-hook
+(dolist (mode '(dired-mode-hook
+		term-mode-hook
 		shell-mode-hook
 		eshell-mode-hook
 		org-mode-hook))

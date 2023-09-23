@@ -58,6 +58,7 @@ epkgs: with epkgs; [
   ### extra
   rainbow-delimiters
   command-log-mode
+  pdf-tools
   ement # matrix client
 
 ]
