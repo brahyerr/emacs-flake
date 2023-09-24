@@ -46,6 +46,7 @@
           path = [
             fzf
             ripgrep
+            ispell
 
             ###  dirvish deps
             fd
