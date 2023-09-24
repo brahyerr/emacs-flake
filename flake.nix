@@ -46,6 +46,15 @@
           path = [
             fzf
             ripgrep
+
+            ###  dirvish deps
+            fd
+            imagemagick
+            poppler
+            ffmpegthumbnailer
+            mediainfo
+            gnutar
+            unzip
             
             ### language servers
             nil
