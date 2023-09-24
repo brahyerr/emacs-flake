@@ -50,12 +50,17 @@ If the new path's directories does not exist, create them."
   (list))
 
 ;; Disable line numbers for some modes
+(defun disable-line-numbers-mode ()
+  (interactive)
+  (display-line-numbers-mode 0))
+
 (dolist (mode '(dired-mode-hook
+		minibuffer-mode-hook
 		term-mode-hook
 		shell-mode-hook
 		eshell-mode-hook
 		org-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+  (add-hook mode #'disable-line-numbers-mode))
 
 ;; Background opacity
 (set-frame-parameter nil 'alpha-background 95)

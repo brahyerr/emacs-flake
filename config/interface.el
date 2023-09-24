@@ -60,3 +60,8 @@
    ("M-s" . dirvish-setup-menu)
    ("M-e" . dirvish-emerge-menu)
    ("M-j" . dirvish-fd-jump)))
+
+(dolist (mode '(dirvish-peek-mode-hook
+		dirvish-directory-view-mode-hook
+		dirvish-override-dired-mode-hook))
+  (add-hook mode #'disable-line-numbers-mode))
