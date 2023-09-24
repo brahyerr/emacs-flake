@@ -7,10 +7,10 @@
 
 ;; Silence stupid startup message
 (setq inhibit-startup-echo-area-message (user-login-name))
+(setq inhibit-splash-screen t)
 
 (setq frame-resize-pixelwise t)
 (setq visible-bell nil
-      inhibit-splash-screen t
       ring-bell-function 'ignore
       select-enable-primary t
       x-select-request-type 'text/plain\;charset=utf-8)
@@ -50,11 +50,17 @@ If the new path's directories does not exist, create them."
   (list))
 
 ;; Disable line numbers for some modes
-(dolist (mode '(term-mode-hook
-		shell-mode-hook
-		eshell-mode-hook
-		org-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+(defun disable-line-numbers-mode ()
+  (interactive)
+  (display-line-numbers-mode 0))
+
+;; (dolist (mode '(dired-mode-hook
+;; 		minibuffer-mode-hook
+;; 		term-mode-hook
+;; 		shell-mode-hook
+;; 		eshell-mode-hook
+;; 		org-mode-hook))
+;;   (add-hook mode #'disable-line-numbers-mode))
 
 ;; Background opacity
 (set-frame-parameter nil 'alpha-background 95)
@@ -65,7 +71,9 @@ If the new path's directories does not exist, create them."
 (add-to-list 'default-frame-alist '(internal-border-width . 16))
 
 ;; UI Enhancements
-(global-display-line-numbers-mode 1)
+(dolist (mode '(prog-mode-hook))
+		;; text-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 1))))
 (setq display-line-numbers-type 'visual)
 (defvar my-linum-current-line-number 0)
 
@@ -81,45 +89,3 @@ If the new path's directories does not exist, create them."
 
 ;; Save history
 (savehist-mode t)
-
-;; Set fonts for emacs
-(set-face-attribute 'default nil :font "lemonscaled" :height 200)
-(set-face-attribute 'tooltip nil :font "lemonscaled" :height 200)
-
-(add-to-list 'default-frame-alist '(font . "lemonscaled-20"))
-(set-fontset-font t 'unicode (font-spec :name "lemonscaled") nil)
-;; (set-fontset-font t 'unicode (font-spec :name "Noto Color Emoji") nil 'append)
-(set-fontset-font t 'unicode (font-spec :name "CozetteHiDpi") nil 'append)
-(set-fontset-font t 'unicode (font-spec :name "JetBrainsMono") nil 'append)
-(set-fontset-font t 'unicode (font-spec :name "DejaVu Sans Mono") nil 'append)
-(set-frame-font "lemonscaled" nil t)
-;; Set the variable pitch face
-(set-face-attribute 'variable-pitch nil :font "Terminus" :height 160 :weight 'regular)
-;; CJK fonts
-(set-fontset-font t 'unicode (font-spec :name "WenQuanYi Bitmap Song") nil 'append)
-(set-fontset-font t 'unicode (font-spec :name "WenQuanYi Bitmap Song") nil 'append)
-(set-fontset-font t 'unicode (font-spec :name "WenQuanYi Bitmap Song") nil 'append)
-(set-fontset-font t 'han (font-spec :name "WenQuanYi Bitmap Song") nil)
-(set-fontset-font t 'kana (font-spec :name "WenQuanYi Bitmap Song") nil)
-(set-fontset-font t 'hangul (font-spec :name "WenQuanYi Bitmap Song") nil)
-
-
-(defun set-fonts-for-emacsclient ()
-  (add-to-list 'default-frame-alist '(font . "lemonscaled-20"))
-  (set-fontset-font t 'unicode (font-spec :name "lemonscaled") nil)
-  (set-fontset-font t 'unicode (font-spec :name "Noto Color Emoji") nil 'append)
-  (set-fontset-font t 'unicode (font-spec :name "CozetteHiDpi") nil 'append)
-  (set-fontset-font t 'unicode (font-spec :name "JetBrainsMono") nil 'append)
-  (set-fontset-font t 'unicode (font-spec :name "DejaVu Sans Mono") nil 'append)
-  (set-frame-font "lemonscaled" nil t)
-  ;; Set the variable pitch face
-  (set-face-attribute 'variable-pitch nil :font "Terminus" :height 160 :weight 'regular)
-  ;; CJK fonts
-  (set-fontset-font t 'unicode (font-spec :name "WenQuanYi Bitmap Song") nil 'append)
-  (set-fontset-font t 'unicode (font-spec :name "WenQuanYi Bitmap Song") nil 'append)
-  (set-fontset-font t 'unicode (font-spec :name "WenQuanYi Bitmap Song") nil 'append)
-  (set-fontset-font t 'han (font-spec :name "WenQuanYi Bitmap Song") nil)
-  (set-fontset-font t 'kana (font-spec :name "WenQuanYi Bitmap Song") nil)
-  (set-fontset-font t 'hangul (font-spec :name "WenQuanYi Bitmap Song") nil))
-
-(add-hook 'server-after-make-frame-hook 'set-fonts-for-emacsclient)
