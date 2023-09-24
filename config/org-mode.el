@@ -1,6 +1,6 @@
 ;; Pad and .org doc with whitespace
 (defun local/org-mode-visual-fill ()
-  (setq visual-fill-column-width 125
+  (setq visual-fill-column-width 100
 	visual-fill-column-center-text t)
   (visual-fill-column-mode 1))
 

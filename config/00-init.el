@@ -54,13 +54,13 @@ If the new path's directories does not exist, create them."
   (interactive)
   (display-line-numbers-mode 0))
 
-(dolist (mode '(dired-mode-hook
-		minibuffer-mode-hook
-		term-mode-hook
-		shell-mode-hook
-		eshell-mode-hook
-		org-mode-hook))
-  (add-hook mode #'disable-line-numbers-mode))
+;; (dolist (mode '(dired-mode-hook
+;; 		minibuffer-mode-hook
+;; 		term-mode-hook
+;; 		shell-mode-hook
+;; 		eshell-mode-hook
+;; 		org-mode-hook))
+;;   (add-hook mode #'disable-line-numbers-mode))
 
 ;; Background opacity
 (set-frame-parameter nil 'alpha-background 95)
@@ -71,7 +71,10 @@ If the new path's directories does not exist, create them."
 (add-to-list 'default-frame-alist '(internal-border-width . 16))
 
 ;; UI Enhancements
-(global-display-line-numbers-mode 1)
+(global-display-line-numbers-mode 0)
+(dolist (mode '(prog-mode-hook))
+		;; text-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 1))))
 (setq display-line-numbers-type 'visual)
 (defvar my-linum-current-line-number 0)
 
