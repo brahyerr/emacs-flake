@@ -71,7 +71,6 @@ If the new path's directories does not exist, create them."
 (add-to-list 'default-frame-alist '(internal-border-width . 16))
 
 ;; UI Enhancements
-(global-display-line-numbers-mode 0)
 (dolist (mode '(prog-mode-hook))
 		;; text-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 1))))
