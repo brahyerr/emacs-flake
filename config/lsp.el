@@ -1,5 +1,7 @@
 ;; Languages
 
+(use-package yuck-mode)
+
 ;; Nix
 ;; (use-package nix-mode
 ;;   :ensure t  
