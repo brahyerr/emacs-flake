@@ -28,6 +28,9 @@ epkgs: with epkgs; [
   meow
   which-key
 
+  ### langauges
+  yuck-mode
+
   ### lsp
   eglot
   # eglot-java
