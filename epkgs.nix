@@ -28,6 +28,9 @@ epkgs: with epkgs; [
   meow
   which-key
 
+  ### shell/term
+  eat
+
   ### langauges
   yuck-mode
 
