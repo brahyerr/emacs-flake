@@ -88,12 +88,3 @@
 	    (set-face-attribute 'org-headline-done nil             :family "lemon" :font "lemon" :height 150 :italic 1)
 	    (set-face-attribute 'org-done nil                      :family "lemon" :font "lemon" :height 150)
 	    (set-face-attribute 'org-todo nil                      :family "lemon" :font "lemon" :height 150)))
-
-;; Make org docs look pretty with org-modern
-;; (use-package org-modern)
-(with-eval-after-load 'org
-  (setq org-modern-todo-faces
-	(quote (("TODO"
-		 :background "orange"
-                 :foreground "black"))))
-  (global-org-modern-mode))
