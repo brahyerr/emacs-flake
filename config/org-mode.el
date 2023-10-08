@@ -56,3 +56,12 @@
 
 ;; Wrap the lines in org mode so that things are easier to read
 (add-hook 'org-mode-hook 'visual-line-mode)
+
+;; Make org docs look pretty with org-modern
+;; (use-package org-modern)
+(with-eval-after-load 'org
+  (setq org-modern-todo-faces
+	(quote (("TODO"
+		 :background "orange"
+                 :foreground "black"))))
+  (global-org-modern-mode))
