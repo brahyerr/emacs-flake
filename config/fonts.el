@@ -40,7 +40,6 @@
 ;; (set-fontset-font t 'kana (font-spec :name "WenQuanYi Bitmap Song") nil)
 ;; (set-fontset-font t 'hangul (font-spec :name "WenQuanYi Bitmap Song") nil)
 
-
 (defun set-fonts-for-emacsclient ()
   (add-to-list 'default-frame-alist '(font . "lemon"))
   (set-fontset-font t 'unicode (font-spec :name "lemon") nil)
@@ -74,3 +73,27 @@
   (set-fontset-font t 'unicode (font-spec :name "Ark Pixel 16px Monospaced zh_cn") nil 'append))
 
 (add-hook 'server-after-make-frame-hook 'set-fonts-for-emacsclient)
+
+;;;; Set font settings for org-mode ;;;;
+;; Variable header font sizes
+(add-hook 'org-mode-hook
+	  (lambda ()
+	    (set-face-attribute 'org-level-1 nil                   :family "lemon" :font "lemon" :height 200)
+	    (set-face-attribute 'org-level-2 nil                   :family "CozetteHiDpi" :font "CozetteHiDpi" :height 200)
+	    (set-face-attribute 'org-level-3 nil                   :family "lemon" :font "lemon" :height 150)
+	    (set-face-attribute 'org-level-4 nil                   :family "lemon" :font "lemon" :height 150)
+	    (set-face-attribute 'org-document-title nil            :family "lemon" :font "lemon" :height 150)
+	    (set-face-attribute 'org-document-info nil             :family "lemon" :font "lemon" :height 150 :italic 1)
+	    (set-face-attribute 'org-document-info-keyword nil     :family "lemon" :font "lemon" :height 150 :italic 1)
+	    (set-face-attribute 'org-headline-done nil             :family "lemon" :font "lemon" :height 150 :italic 1)
+	    (set-face-attribute 'org-done nil                      :family "lemon" :font "lemon" :height 150)
+	    (set-face-attribute 'org-todo nil                      :family "lemon" :font "lemon" :height 150)))
+
+;; Make org docs look pretty with org-modern
+;; (use-package org-modern)
+(with-eval-after-load 'org
+  (setq org-modern-todo-faces
+	(quote (("TODO"
+		 :background "orange"
+                 :foreground "black"))))
+  (global-org-modern-mode))
