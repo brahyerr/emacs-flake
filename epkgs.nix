@@ -66,5 +66,7 @@ epkgs: with epkgs; [
   command-log-mode
   pdf-tools
   ement # matrix client
+  mpv
+  emms
 
 ]
