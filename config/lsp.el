@@ -23,7 +23,9 @@
    (c++-mode . eglot-ensure)
    (java-mode . eglot-ensure)))
 (setq eglot-sync-connect 1)
-;; (use-package eglot-java)
+(use-package eglot-java)
+;;   :hook
+;;   (java-mode . eglot-java-mode))
 
 ;; Use java-language-server instead of jdtls
 (with-eval-after-load 'eglot
