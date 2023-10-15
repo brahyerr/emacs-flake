@@ -36,7 +36,7 @@ epkgs: with epkgs; [
 
   ### lsp
   eglot
-  # eglot-java
+  eglot-java
   lsp-mode
   lsp-java
   lsp-ui
