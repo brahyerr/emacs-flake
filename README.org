@@ -24,7 +24,7 @@ If all you want is boilerplate for a reproducible config, check out the [[https:
 
 ** Adding/editing config files
 
-- Emacs lisp configs should be placed in =./config/=.
+- ~*.el~ files should be placed in =./config/=.
 - Nix will read the directory in lexicographical order, concatenate the contents of each config, and build an init file.
   - So, to edit load order of config files, edit the names of the files when necessary.
   - For example, my init file is named ~00-init.el~.
