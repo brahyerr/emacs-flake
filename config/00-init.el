@@ -63,8 +63,8 @@ If the new path's directories does not exist, create them."
 ;;   (add-hook mode #'disable-line-numbers-mode))
 
 ;; Background opacity
-(set-frame-parameter nil 'alpha-background 80)
-(add-to-list 'default-frame-alist '(alpha-background . 80))
+(set-frame-parameter nil 'alpha-background 85)
+(add-to-list 'default-frame-alist '(alpha-background . 85))
 
 ;; Frame margins
 (set-frame-parameter nil 'internal-border-width 16)
