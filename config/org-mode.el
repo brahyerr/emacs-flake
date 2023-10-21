@@ -65,3 +65,7 @@
 		 :background "orange"
                  :foreground "black"))))
   (global-org-modern-mode))
+
+;; Automatically render latex preview when cursor hovers over latex ;;
+(use-package org-fragtog)
+(add-hook 'org-mode-hook 'org-fragtog-mode)
