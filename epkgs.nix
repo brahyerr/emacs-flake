@@ -6,6 +6,7 @@ epkgs: with epkgs; [
   
   ### theme
   # color-theme-sanityinc-tomorrow
+  abyss-theme
   timu-caribbean-theme
   mood-line
 
