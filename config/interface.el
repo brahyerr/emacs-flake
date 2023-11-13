@@ -4,9 +4,9 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; Colortheme
-(use-package abyss-theme
+(use-package ef-themes
   :config
-  (load-theme #'abyss t))
+  (load-theme #'ef-dark t))
 
 ;; (use-package timu-caribbean-theme
 ;;   :config
