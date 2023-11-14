@@ -5,7 +5,7 @@ epkgs: with epkgs; [
   fzf
   
   ### theme
-  # color-theme-sanityinc-tomorrow
+  color-theme-sanityinc-tomorrow
   ef-themes
   timu-caribbean-theme
   mood-line
