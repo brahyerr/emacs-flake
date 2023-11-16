@@ -60,6 +60,7 @@ epkgs: with epkgs; [
   # org  <-- using external org pkg appears to make emacs freeze when opening .org
   org-roam
   org-modern
+  org-download
   org-fragtog
   visual-fill-column
 
