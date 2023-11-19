@@ -1,9 +1,9 @@
-(use-package mood-line
-  :config
-  ;; (mood-line-glyph-alist . mood-line-glyphs-fira-code)
-  (mood-line-mode t))
-(with-eval-after-load 'mood-line
-  (setq mood-line-glyph-alist mood-line-glyphs-fira-code))
+;; (use-package mood-line
+;;   :config
+;;   ;; (mood-line-glyph-alist . mood-line-glyphs-fira-code)
+;;   (mood-line-mode t))
+;; (with-eval-after-load 'mood-line
+;;   (setq mood-line-glyph-alist mood-line-glyphs-fira-code))
 
 ;; (use-package doom-modeline
 ;;   :ensure t
