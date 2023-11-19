@@ -7,8 +7,10 @@ epkgs: with epkgs; [
   ### theme
   color-theme-sanityinc-tomorrow
   ef-themes
-  timu-caribbean-theme
-  mood-line
+  hemisu-theme
+  color-theme-modern
+  # timu-caribbean-theme
+  # mood-line
 
   ### completion framework
   vertico
@@ -63,6 +65,7 @@ epkgs: with epkgs; [
   org-download
   org-fragtog
   visual-fill-column
+  el-easydraw # inline drawing tool
 
   ### extra
   rainbow-delimiters
@@ -71,5 +74,4 @@ epkgs: with epkgs; [
   ement # matrix client
   mpv
   emms
-
 ]

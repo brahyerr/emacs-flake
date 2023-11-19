@@ -4,10 +4,14 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; Colortheme
-(load-theme 'modus-vivendi t)
-;; (use-package ef-themes
-;;   :config
-;;   (load-theme #'ef-dark t))
+(use-package hemisu-theme)
+(use-package color-theme-modern
+  :config
+  (load-theme 'billw t))
+
+;; (use-package color-theme-sanityinc-tomorrow)
+;; (color-theme-sanityinc-tomorrow--define-theme bright)
+;; (color-theme-sanityinc-tomorrow-bright)
 
 ;; (use-package timu-caribbean-theme
 ;;   :config
@@ -18,9 +22,6 @@
 ;; (customize-set-variable 'timu-caribbean-scale-org-level-2 nil)
 ;; (customize-set-variable 'timu-caribbean-scale-org-level-3 nil)
 
-;; (use-package color-theme-sanityinc-tomorrow)
-;; (color-theme-sanityinc-tomorrow--define-theme bright)
-;; (color-theme-sanityinc-tomorrow-bright)
 
 ;; Dirvish
 (use-package dirvish
