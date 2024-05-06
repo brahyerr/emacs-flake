@@ -4,10 +4,11 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; Colortheme
-(use-package hemisu-theme)
-(use-package color-theme-modern
-  :config
-  (load-theme 'billw t))
+(load-theme 'ef-winter t)
+;; (use-package hemisu-theme)
+;; (use-package color-theme-modern
+;;   :config
+;;   (load-theme 'billw t))
 
 ;; (use-package color-theme-sanityinc-tomorrow)
 ;; (color-theme-sanityinc-tomorrow--define-theme bright)

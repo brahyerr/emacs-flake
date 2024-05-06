@@ -1,3 +1,10 @@
+(setq sml/theme 'dark)
+(sml/setup)
+(use-package mini-modeline
+  :after smart-mode-line
+  :config
+  (mini-modeline-mode t))
+
 ;; (use-package mood-line
 ;;   :config
 ;;   ;; (mood-line-glyph-alist . mood-line-glyphs-fira-code)

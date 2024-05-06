@@ -11,6 +11,8 @@ epkgs: with epkgs; [
   color-theme-modern
   # timu-caribbean-theme
   # mood-line
+  smart-mode-line
+  mini-echo
 
   ### completion framework
   vertico
