@@ -296,6 +296,8 @@
   ;;(add-to-list 'completion-at-point-functions #'cape-dict)
   ;;(add-to-list 'completion-at-point-functions #'cape-elisp-symbol)
   ;;(add-to-list 'completion-at-point-functions #'cape-line)
+
+  ;;(setq cape-dict-file ispell-alternate-dictionary)
   )
 (use-package yasnippet
   :init

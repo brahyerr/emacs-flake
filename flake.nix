@@ -33,11 +33,7 @@
         # Basically, if you want the contents of one particular file to load earlier, edit its name.
 
         defaultInitFile = true;
-        config = pkgs.writeText "emacs-config.el" (concatFiles ./config
-                 + ''
-                     (setq ispell-alternate-dictionary "${dictionary}/share/dict/words")
-                     (setq cape-dict-file ispell-alternate-dictionary)
-                   '');
+        config = pkgs.writeText "emacs-config.el" ("(setq ispell-alternate-dictionary \"${dictionary}/share/dict/words\")" + concatFiles ./config);
         package = if (system == "x86_64-linux" || system == "aarch64-linux")
                   then pkgs.emacs-pgtk  # Experimental wayland support
                   else pkgs.emacs29-macport;
