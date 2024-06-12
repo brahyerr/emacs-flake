@@ -299,6 +299,15 @@
 
   ;;(setq cape-dict-file ispell-alternate-dictionary)
   )
+
+;; rtag completion config
+;; (use-package company)  ;; required for company-rtags but is not used
+;; (setq rtags-completions-enabled t)
+;; Use Company backends as Capfs.
+;; (setq-local completion-at-point-functions
+;;   (mapcar #'cape-company-to-capf
+;;  	  (list #'company-rtags)))
+
 (use-package yasnippet
   :init
   (yas-global-mode 1))

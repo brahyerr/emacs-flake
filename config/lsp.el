@@ -21,7 +21,18 @@
    (python-mode . eglot-ensure)
    (c-mode . eglot-ensure)
    (c++-mode . eglot-ensure)
-   (java-mode . eglot-ensure)))
+   (java-mode . eglot-ensure))
+  :config
+  ;; configure clangd for c++ and c
+  (when-let* ((clangd (seq-find #'executable-find '("clangd" "clangd-6.0")))
+              ;; this has to match the tool string in compile-commands.json
+              ;; clangd will then use these tools to get system header paths
+              (init-args "--query-driver=/**/*"))
+    (when (eq window-system 'w32)
+      (setq init-args "--query-driver=*:\\**\\*"))
+    (add-to-list 'eglot-server-programs
+                 `((c++-mode c-mode) ,clangd ,init-args))))
+
 (setq eglot-sync-connect 1)
 (use-package eglot-java)
 ;;   :hook
@@ -34,6 +45,11 @@
 
 (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster) ;; make corfu work better with eglot
 (use-package flycheck)
+
+;; rtags
+(use-package rtags
+  :config
+  (rtags-enable-standard-keybindings))
 
 ;; (add-hook 'nix-mode-hook 'eglot-ensure)
 ;; (add-hook 'c-mode-hook 'eglot-ensure)

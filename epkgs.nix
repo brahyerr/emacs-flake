@@ -46,6 +46,8 @@ epkgs: with epkgs; [
   lsp-java
   lsp-ui
   dap-mode
+  rtags
+  flycheck-rtags
 
   ### common lisp
   sly
