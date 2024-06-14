@@ -19,6 +19,8 @@
 (tooltip-mode -1)
 (set-fringe-mode 10)
 (menu-bar-mode -1)
+
+(setq undo-limit 300000)
 ;; (setq-default left-margin-width 2
 ;; 	      right-margin-width 2)
 
@@ -86,6 +88,10 @@ If the new path's directories does not exist, create them."
 (setq-default indicate-buffer-boundaries 'left)  ; Show buffer top and bottom in the margin
 (blink-cursor-mode -1)                                ; Steady cursor
 (pixel-scroll-precision-mode 1)                         ; Smooth scrolling
+(setq scroll-conservatively most-positive-fixnum        ; Stop scrolling by huge leaps
+      scroll-preserve-screen-position t)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Save history
 (savehist-mode t)
