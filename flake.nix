@@ -60,7 +60,7 @@
             mediainfo
             gnutar
             unzip
-            
+
             ### language servers
             nil
             vscode-langservers-extracted   # HTML/CSS/JSON/ESLint

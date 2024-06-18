@@ -38,16 +38,22 @@ epkgs: with epkgs; [
 
   ### langauges
   yuck-mode
+  glsl-mode
 
+  ### AI/LLM
+  ellama
+  
   ### lsp
   eglot
   eglot-java
+  # lsp-bridge
   lsp-mode
   lsp-java
   lsp-ui
   dap-mode
   rtags
   flycheck-rtags
+  dumb-jump
 
   ### common lisp
   sly
