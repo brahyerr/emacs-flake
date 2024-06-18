@@ -68,10 +68,12 @@
 ;; See also `global-corfu-modes'.
 ;; (keymap-global-set "M-n" 'corfu-next)
 ;; (keymap-global-set "M-p" 'corfu-previous)
+
 (global-corfu-mode t)
+
 ;; Enable corfu popupinfo
 (corfu-popupinfo-mode t)
-(setq corfu-popupinfo-delay '(0.35 . 0.2))
+(setq corfu-popupinfo-delay '(0.2 . 0.2))
 (setq corfu-popupinfo-hide nil)
 
 (defun corfu-enable-in-minibuffer ()

@@ -2,16 +2,10 @@
 
 (use-package yuck-mode)
 
-;; Nix
-;; (use-package nix-mode
-;;   :ensure t  
-;;   :mode "\\.nix\\'")
-;; 
-;; ;; Python
-;; (use-package python
-;;   :ensure t
-;;   :mode ("\\.py\\'" . python-mode))
-;; 
+;; CC mode settings (C, C++, Java, etc)
+(setq-default c-default-style "linux"
+	      c-basic-offset 8)
+
 ;; Eglot hooks
 (use-package eglot
   :hook
@@ -44,29 +38,54 @@
                '(java-mode . ("java-language-server"))))
 
 (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster) ;; make corfu work better with eglot
+
+;; lsp-bridge
+;; (use-package lsp-bridge
+;;   :config
+;;   (setq lsp-bridge-enable-log nil)
+;;   (setq lsp-bridge-enable-hover-diagnostic t)
+;;   (global-lsp-bridge-mode))
+
 (use-package flycheck)
+
+;; eldoc settings
+(setq eldoc-idle-delay 0.2)
+;; (defun local/eldoc-buffer-hook ()
+;;   (progn
+;;     (eldoc)
+;;     (enlarge-window-horizontally (floor (* (window-total-width) 0.55)))))
+  
+;; (add-hook 'c-mode-hook 'local/eldoc-buffer-hook)
+;; (add-hook 'c++-mode-hook 'local/eldoc-buffer-hook)
+;; (add-hook 'html-mode-hook 'local/eldoc-buffer-hook)
+
+;; Display scope info at the top
+(defun local/semantic-mode-hook ()
+  (semantic-mode)
+  (semantic-stickyfunc-mode))
+
+(add-hook 'c++-mode-hook #'local/semantic-mode-hook)
+(add-hook 'c-mode-hook #'local/semantic-mode-hook)
+(add-hook 'html-mode-hook #'local/semantic-mode-hook)
+
+;; Alternatively, display scope info in the minibuffer
+;; Less intuitive but less overhead
+;; (defun local/which-function-hook ()
+;;   (which-function-mode t))
+
+;; (add-hook 'c++-mode-hook #'local/which-function-hook)
+;; (add-hook 'c-mode-hook #'local/which-function-hook)
+;; (add-hook 'html-mode-hook #'local/which-function-hook)
+
+;; dumb-jump
+(setq dumb-jump-force-searcher 'rg)
+;; (setq xref-show-definitions-function #'xref-show-definitions-completing-read) ;; use consult instead
+(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
 ;; rtags
 (use-package rtags
   :config
   (rtags-enable-standard-keybindings))
-
-;; (add-hook 'nix-mode-hook 'eglot-ensure)
-;; (add-hook 'c-mode-hook 'eglot-ensure)
-;; (add-hook 'java-mode-hook 'eglot-ensure
-;; (add-hook 'python-mode-hook 'eglot-ensure)
-;; (add-hook 'css-mode-hook 'eglot-ensure)
-;; (add-hook 'html-mode-hook 'eglot-ensure)
-
-;; (add-to-list 'eglot-server-programs '((nix-mode python-mode) .
-;;     ("nil" :initializationOptions
-;;       (:hints (:parameterNames t
-;;                :rangeVariableTypes t
-;;                :functionTypeParameters t
-;;                :assignVariableTypes t
-;;                :compositeLiteralFields t
-;;                :compositeLiteralTypes t
-;;                :constantValues t)))))
 
 ;; (defun resize-help-window ()
 ;;   (interactive)
