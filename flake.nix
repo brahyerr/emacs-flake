@@ -50,7 +50,8 @@
           path = [
             fzf
             ripgrep
-            (aspellWithDicts (dicts: with dicts; [ fr en en-computers en-science ]))
+            emacs-lsp-booster
+            # (aspellWithDicts (dicts: with dicts; [ fr en en-computers en-science ]))
 
             ###  dirvish deps
             fd

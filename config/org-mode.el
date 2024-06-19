@@ -44,9 +44,9 @@
 ;; (define-key org-mode-map (kbd "C-c <down>") 'org-priority-down)
 
 ;; Shortcuts for storing links, viewing the agenda, and starting a capture
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(define-key global-map "\C-cc" 'org-capture)
+;; (define-key global-map "\C-cl" 'org-store-link)
+;; (define-key global-map "\C-ca" 'org-agenda)
+;; (define-key global-map "\C-cc" 'org-capture)
 
 ;; When you want to change the level of an org item, use SMR
 ;; (define-key org-mode-map (kbd "C-c C-g C-r") 'org-shiftmetaright)

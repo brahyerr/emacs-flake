@@ -21,7 +21,11 @@ epkgs: with epkgs; [
   orderless
   yasnippet
   yasnippet-snippets
+  avy
+  embark
   consult
+  embark-consult
+  consult-eglot-embark
   marginalia
   # embark
 

@@ -1,21 +1,24 @@
-;; Languages
-
-(use-package yuck-mode)
-
 ;; CC mode settings (C, C++, Java, etc)
 (setq-default c-default-style "linux"
 	      c-basic-offset 8)
 
-;; Eglot hooks
+;;;; Make eglot faster by making eglot use emacs-lsp-booster
+(use-package eglot-booster
+  :ensure nil
+  :after eglot
+  :load-path (expand-file-name "./eglot-booster.el")
+  :config (eglot-booster-mode))
+
+;;;; Eglot config
 (use-package eglot
-  :hook
-  ((nix-mode . eglot-ensure)
-   (css-mode . eglot-ensure)
-   (html-mode . eglot-ensure)
-   (python-mode . eglot-ensure)
-   (c-mode . eglot-ensure)
-   (c++-mode . eglot-ensure)
-   (java-mode . eglot-ensure))
+  ;; :hook
+  ;; ((nix-mode . eglot-ensure)
+  ;;  (css-mode . eglot-ensure)
+  ;;  (html-mode . eglot-ensure)
+  ;;  (python-mode . eglot-ensure)
+  ;;  (c-mode . eglot-ensure)
+  ;;  (c++-mode . eglot-ensure)
+  ;;  (java-mode . eglot-ensure))
   :config
   ;; configure clangd for c++ and c
   (when-let* ((clangd (seq-find #'executable-find '("clangd" "clangd-6.0")))
@@ -32,14 +35,14 @@
 ;;   :hook
 ;;   (java-mode . eglot-java-mode))
 
-;; Use java-language-server instead of jdtls
+;;;; Eglot - use java-language-server instead of jdtls
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
                '(java-mode . ("java-language-server"))))
 
 (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster) ;; make corfu work better with eglot
 
-;; lsp-bridge
+;;;; lsp-bridge - unused
 ;; (use-package lsp-bridge
 ;;   :config
 ;;   (setq lsp-bridge-enable-log nil)
@@ -48,7 +51,7 @@
 
 (use-package flycheck)
 
-;; eldoc settings
+;;;; eldoc settings
 (setq eldoc-idle-delay 0.2)
 ;; (defun local/eldoc-buffer-hook ()
 ;;   (progn
@@ -59,7 +62,7 @@
 ;; (add-hook 'c++-mode-hook 'local/eldoc-buffer-hook)
 ;; (add-hook 'html-mode-hook 'local/eldoc-buffer-hook)
 
-;; Display scope info at the top
+;;;; Display scope info at the top
 (defun local/semantic-mode-hook ()
   (semantic-mode)
   (semantic-stickyfunc-mode))
@@ -68,24 +71,19 @@
 (add-hook 'c-mode-hook #'local/semantic-mode-hook)
 (add-hook 'html-mode-hook #'local/semantic-mode-hook)
 
-;; Alternatively, display scope info in the minibuffer
-;; Less intuitive but less overhead
-;; (defun local/which-function-hook ()
-;;   (which-function-mode t))
-
-;; (add-hook 'c++-mode-hook #'local/which-function-hook)
-;; (add-hook 'c-mode-hook #'local/which-function-hook)
-;; (add-hook 'html-mode-hook #'local/which-function-hook)
-
-;; dumb-jump
+;;;; dumb-jump
 (setq dumb-jump-force-searcher 'rg)
 ;; (setq xref-show-definitions-function #'xref-show-definitions-completing-read) ;; use consult instead
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
-;; rtags
+;;;; rtags
 (use-package rtags
   :config
   (rtags-enable-standard-keybindings))
+
+;;;; envrc
+(use-package envrc
+  :hook (after-init . envrc-global-mode))
 
 ;; (defun resize-help-window ()
 ;;   (interactive)

@@ -73,7 +73,7 @@
 
 ;; Enable corfu popupinfo
 (corfu-popupinfo-mode t)
-(setq corfu-popupinfo-delay '(0.2 . 0.2))
+(setq corfu-popupinfo-delay '(0.15 . 0.15))
 (setq corfu-popupinfo-hide nil)
 
 (defun corfu-enable-in-minibuffer ()
@@ -191,7 +191,7 @@
   ;; Optionally configure the register formatting. This improves the register
   ;; preview for `consult-register', `consult-register-load',
   ;; `consult-register-store' and the Emacs built-ins.
-  (setq register-preview-delay 0.4
+  (setq register-preview-delay 0.3
         register-preview-function #'consult-register-format)
 
   ;; Optionally tweak the register preview window.
@@ -244,6 +244,33 @@
   ;;;; 5. No project support
   ;; (setq consult-project-function nil)
 )
+
+(use-package avy
+  :demand t
+  :bind (("C-c l" . avy-goto-line)  ; conflicts with org-agenda if set
+         ("s-j"   . avy-goto-char-timer)))
+
+(use-package embark
+  :demand t
+  :after avy
+  :bind (("C-c a" . embark-act))        ; overwrites org-agenda
+  :init
+  ;; Add the option to run embark when using avy
+  (defun bedrock/avy-action-embark (pt)
+    (unwind-protect
+        (save-excursion
+          (goto-char pt)
+          (embark-act))
+      (select-window
+       (cdr (ring-ref avy-ring 0))))
+    t)
+
+  ;; After invoking avy-goto-char-timer, hit "." to run embark at the next
+  ;; candidate you select
+  (setf (alist-get ?. avy-dispatch-alist) 'bedrock/avy-action-embark))
+
+(use-package embark-consult)
+(use-package consult-eglot-embark)
 
 ;; Enable rich annotations using the Marginalia package
 (use-package marginalia
