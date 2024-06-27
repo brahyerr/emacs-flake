@@ -6,8 +6,8 @@
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
 ;; Silence stupid startup message
-(setq inhibit-startup-echo-area-message (user-login-name))
-(setq inhibit-splash-screen t)
+(setq inhibit-startup-echo-area-message (user-login-name)
+      inhibit-splash-screen t)
 
 (setq frame-resize-pixelwise t)
 (setq visible-bell nil

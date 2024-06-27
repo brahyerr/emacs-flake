@@ -1,11 +1,19 @@
-;; Native keybinds
-(keymap-global-set "M-]" 'next-buffer)
-(keymap-global-set "M-[" 'previous-buffer)
-(keymap-global-set "M-l" 'next-window-any-frame)  ;; originally downcase-word
-(keymap-global-set "M-h" 'previous-window-any-frame)  ;; originally mark-paragraph
-(keymap-global-set "M-d" 'next-window-any-frame)  ;; originally kill-word
-(keymap-global-set "M-a" 'previous-window-any-frame)  ;; originally backward-sentence
-(keymap-global-set "M-f" 'window-swap-states)
+;; native keybinds
+(keymap-global-set "M-}" 'next-buffer)
+(keymap-global-set "M-{" 'previous-buffer)
+(keymap-global-set "M-]" 'forward-paragraph)
+(keymap-global-set "M-[" 'backward-paragraph)
+(keymap-global-set "C-." 'next-window-any-frame)
+(keymap-global-set "C-," 'previous-window-any-frame)
+(keymap-global-set "C-'" 'window-swap-states)
+(keymap-global-set "M-n" 'forward-word)
+(keymap-global-set "M-p" 'backward-word)
+
+;; override local keybinds
+(add-hook 'compilation-mode-hook
+	  (lambda ()
+	    (keymap-local-set "M-}" 'next-buffer)
+	    (keymap-local-set "M-{" 'previous-buffer)))
 
 ;; Dired keymaps
 (define-key dired-mode-map (kbd "J") 'dired-find-alternate-file)
@@ -124,13 +132,6 @@
   (meow-motion-overwrite-define-key
    '(":" . "M-x"))
   (meow-normal-define-key
-   '("M-]" . next-buffer)
-   '("M-[" . previous-buffer)
-   '("M-l" . next-window-any-frame)  ;; originally downcase-word
-   '("M-h" . previous-window-any-frame)  ;; originally mark-paragraph
-   '("M-d" . next-window-any-frame)  ;; originally kill-word
-   '("M-a" . previous-window-any-frame)  ;; originally backward-sentence
-   '("M-f" . window-swap-states)
    ;; '("(" . scroll-down-command)
    ;; '(")" . scroll-up-command)
    '("0" . meow-expand-0)

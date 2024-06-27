@@ -9,7 +9,7 @@
   ;; (setq vertico-scroll-margin 0)
 
   ;; Show more candidates
-  ;; (setq vertico-count 20)
+  (setq vertico-count 16)
 
   ;; Grow and shrink the Vertico minibuffer
   ;; (setq vertico-resize nil)
@@ -73,15 +73,16 @@
 
 ;; Enable corfu popupinfo
 (corfu-popupinfo-mode t)
-(setq corfu-popupinfo-delay '(0.15 . 0.15))
-(setq corfu-popupinfo-hide nil)
+(setq corfu-popupinfo-delay '(0.2 . 0.2))
+(setq corfu-popupinfo-hide t)
 
 (defun corfu-enable-in-minibuffer ()
   "Enable Corfu in the minibuffer if `completion-at-point' is bound."
   (when (where-is-internal #'completion-at-point (list (current-local-map)))
     ;; (setq-local corfu-auto nil) ;; Enable/disable auto completion
     (setq-local corfu-echo-delay nil ;; Disable automatic echo and popup
-                corfu-popupinfo-delay nil)
+                ; corfu-popupinfo-delay nil)
+	)
     (corfu-mode 1)))
 (add-hook 'minibuffer-setup-hook #'corfu-enable-in-minibuffer)
 

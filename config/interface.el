@@ -1,3 +1,15 @@
+;;;; Get mini-modeline to draw GUI in server mode
+(add-function
+  :after after-focus-change-function
+  #'(lambda ()
+      (unless mini-modeline-mode
+	(mini-modeline-mode t))))
+
+;;;; Support ansi-color in compilation buffer
+(use-package ansi-color
+	 :ensure nil
+	 :hook (compilation-filter . ansi-color-compilation-filter))
+
 ;; Rainbow-delimiters
 (use-package rainbow-delimiters)
   ;; Hook prog-mode to rainbow-delimiters-mode
@@ -22,7 +34,6 @@
 ;; (customize-set-variable 'timu-caribbean-scale-org-level-1 nil)
 ;; (customize-set-variable 'timu-caribbean-scale-org-level-2 nil)
 ;; (customize-set-variable 'timu-caribbean-scale-org-level-3 nil)
-
 
 ;; Dirvish
 (use-package dirvish
