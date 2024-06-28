@@ -33,55 +33,77 @@
         # Basically, if you want the contents of one particular file to load earlier, edit its name.
 
         defaultInitFile = true;
+        config = pkgs.writeText "emacs-config.el" ("(setq ispell-alternate-dictionary \"${dictionary}/share/dict/words\")");
+        package = if (system == "x86_64-linux" || system == "aarch64-linux")
+                  then pkgs.emacs-pgtk  # Experimental wayland support
+                  else pkgs.emacs29-macport;
+        extraEmacsPackages = import ./epkgs.nix;
+        alwaysEnsure = false;
+      };
+
+      emacs-unwrapped-config = pkgs.emacsWithPackagesFromUsePackage {
+        defaultInitFile = true;
         config = pkgs.writeText "emacs-config.el" ("(setq ispell-alternate-dictionary \"${dictionary}/share/dict/words\")" + concatFiles ./config);
         package = if (system == "x86_64-linux" || system == "aarch64-linux")
                   then pkgs.emacs-pgtk  # Experimental wayland support
                   else pkgs.emacs29-macport;
         extraEmacsPackages = import ./epkgs.nix;
-        alwaysEnsure = true;
+        alwaysEnsure = false;
       };
-      
-      # Wrap the emacs binary with extra external programs to be available in its PATH
+
+      path = with pkgs; [
+        fzf
+        ripgrep
+        emacs-lsp-booster
+
+        ###  dirvish deps
+        fd
+        imagemagick
+        poppler
+        ffmpegthumbnailer
+        mediainfo
+        gnutar
+        unzip
+
+        ### language servers
+        nil
+        vscode-langservers-extracted   # HTML/CSS/JSON/ESLint
+        yaml-language-server
+      ];
+
       emacs-wrapped = with pkgs; symlinkJoin {
         name = "emacs";
         buildInputs = [ makeWrapper ];
         paths = [ emacs-unwrapped ];
-        postBuild = let 
-          path = [
-            fzf
-            ripgrep
-            emacs-lsp-booster
-            # (aspellWithDicts (dicts: with dicts; [ fr en en-computers en-science ]))
+        postBuild = ''
+          for file in $out/bin/*; do
+            wrapProgram $file \
+              --prefix PATH : ${lib.makeBinPath path} \
+              --set-default ASPELL_CONF=dict-dir ${aspellWithDicts (dicts: with dicts; [ fr en en-computers en-science ])}/lib/aspell
+          done
+        '';
+      };
 
-            ###  dirvish deps
-            fd
-            imagemagick
-            poppler
-            ffmpegthumbnailer
-            mediainfo
-            gnutar
-            unzip
-
-            ### language servers
-            nil
-            vscode-langservers-extracted   # HTML/CSS/JSON/ESLint
-            yaml-language-server
-
-            ### tex
-            # pandoc
-            # texlive.combined.scheme-medium
-          ];
-        in ''
-        for file in $out/bin/*; do
-          wrapProgram $file \
-            --prefix PATH : ${lib.makeBinPath path} \
-            --set-default ASPELL_CONF=dict-dir ${aspellWithDicts (dicts: with dicts; [ fr en en-computers en-science ])}/lib/aspell
-        done
+      
+      # Wrap the emacs binary with extra external programs to be available in its PATH
+      emacs-wrapped-config = with pkgs; symlinkJoin {
+        name = "emacs";
+        buildInputs = [ makeWrapper ];
+        paths = [ emacs-unwrapped-config ];
+        postBuild = ''
+          for file in $out/bin/*; do
+            wrapProgram $file \
+              --prefix PATH : ${lib.makeBinPath path} \
+              --set-default ASPELL_CONF=dict-dir ${aspellWithDicts (dicts: with dicts; [ fr en en-computers en-science ])}/lib/aspell
+          done
         '';
       };
     in {
       formatter.${system} = pkgs.alejandra;
-      packages.${system}.default = emacs-wrapped;
+      packages.${system} = {
+        default = emacs-wrapped;
+        config = emacs-wrapped-config;
+      };
       devShells.${system}.default = pkgs.mkShell {
         # buildInputs = [ emacs-wrapped ];
         packages = [ emacs-wrapped ];
