@@ -15,9 +15,8 @@ epkgs: with epkgs; [
   timu-caribbean-theme
   ef-themes
   hemisu-theme
-  # leuven-theme
   solo-jazz-theme
-  # mood-line
+  mood-line
   smart-mode-line
   simple-modeline
   nano-modeline
