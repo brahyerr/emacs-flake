@@ -36,7 +36,7 @@
         config = wrappers.emacs-wrapped-config;
       };
       devShells.${system}.default = pkgs.mkShell {
-        # buildInputs = [ emacs-wrapped ];
+        buildInputs = [ wrappers.emacs-wrapped ];
         packages = [ wrappers.emacs-wrapped ];
       };
     });

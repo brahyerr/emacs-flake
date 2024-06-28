@@ -26,6 +26,7 @@ epkgs: with epkgs; [
   dumb-jump
   envrc
   magit
+  flycheck
 
   ### completion framework
   vertico
