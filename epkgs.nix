@@ -22,6 +22,7 @@ epkgs: with epkgs; [
   dap-mode
   dumb-jump
   envrc
+  magit
 
   ### completion framework
   vertico
