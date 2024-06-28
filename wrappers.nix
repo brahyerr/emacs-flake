@@ -33,7 +33,7 @@
     extraEmacsPackages = import ./epkgs-exwm.nix;
     alwaysEnsure = false;
     config = pkgs.writeText "emacs-config.el" ("(setq ispell-alternate-dictionary \"${dictionary}/share/dict/words\")");
-    package = pkgs.emacs-git;
+    package = pkgs.emacs-pgtk;
   };
 
   path = with pkgs; [
