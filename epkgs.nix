@@ -24,6 +24,7 @@ epkgs: with epkgs; [
   doom-modeline
   doom-modeline-now-playing
   mini-echo
+  nerd-fonts
 
   ### development
   eglot
