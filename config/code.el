@@ -76,11 +76,6 @@
 ;; (setq xref-show-definitions-function #'xref-show-definitions-completing-read) ;; use consult instead
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
-;;;; rtags
-(use-package rtags
-  :config
-  (rtags-enable-standard-keybindings))
-
 ;;;; envrc
 (use-package envrc
   :hook (after-init . envrc-global-mode))

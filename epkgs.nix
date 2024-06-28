@@ -11,6 +11,7 @@ epkgs: with epkgs; [
   # timu-caribbean-theme
   # mood-line
   smart-mode-line
+  mini-modeline
   mini-echo
   dirvish
 
