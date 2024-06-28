@@ -1,10 +1,9 @@
 epkgs: with epkgs; [
-  # treesit-auto
   treesit-grammars.with-all-grammars
   ripgrep
   fzf
   
-  ### theme
+  ### interface
   # color-theme-sanityinc-tomorrow
   ef-themes
   hemisu-theme
@@ -13,6 +12,15 @@ epkgs: with epkgs; [
   # mood-line
   smart-mode-line
   mini-echo
+  dirvish
+
+  ### development
+  eglot
+  eglot-java
+  # lsp-bridge
+  dap-mode
+  dumb-jump
+  envrc
 
   ### completion framework
   vertico
@@ -27,7 +35,6 @@ epkgs: with epkgs; [
   embark-consult
   consult-eglot-embark
   marginalia
-  # embark
 
   ### descriptive help/documentation
   helpful
@@ -39,26 +46,15 @@ epkgs: with epkgs; [
 
   ### shell/term
   eat
+  vterm
 
-  ### langauges
+  ### langauge-mode
   yuck-mode
   glsl-mode
 
   ### AI/LLM
   ellama
   
-  ### lsp
-  eglot
-  eglot-java
-  # lsp-bridge
-  lsp-mode
-  lsp-java
-  lsp-ui
-  dap-mode
-  rtags
-  flycheck-rtags
-  dumb-jump
-
   ### common lisp
   sly
 	
