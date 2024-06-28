@@ -9,16 +9,22 @@ epkgs: with epkgs; [
   bug-hunter
   
   ### interface
-  # color-theme-sanityinc-tomorrow
+  dirvish
+  color-theme-sanityinc-tomorrow
+  color-theme-modern
+  timu-caribbean-theme
   ef-themes
   hemisu-theme
-  color-theme-modern
-  # timu-caribbean-theme
+  # leuven-theme
+  solo-jazz-theme
   # mood-line
   smart-mode-line
+  simple-modeline
+  nano-modeline
   mini-modeline
+  doom-modeline
+  doom-modeline-now-playing
   mini-echo
-  dirvish
 
   ### development
   eglot
