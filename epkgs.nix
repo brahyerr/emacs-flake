@@ -6,6 +6,7 @@ epkgs: with epkgs; [
   enlight # dashboard
   jinx # spellchecking
   citar # citations
+  bug-hunter
   
   ### interface
   # color-theme-sanityinc-tomorrow
