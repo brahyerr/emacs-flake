@@ -2,6 +2,10 @@ epkgs: with epkgs; [
   treesit-grammars.with-all-grammars
   ripgrep
   fzf
+  async
+  enlight # dashboard
+  jinx # spellchecking
+  citar # citations
   
   ### interface
   # color-theme-sanityinc-tomorrow
@@ -19,7 +23,6 @@ epkgs: with epkgs; [
   eglot
   eglot-java
   # lsp-bridge
-  dap-mode
   dumb-jump
   envrc
   magit
@@ -70,14 +73,14 @@ epkgs: with epkgs; [
   latex-math-preview
   auctex
 
-  ### org packages
-  # org  <-- using external org pkg appears to make emacs freeze when opening .org
+  ### org
   org-roam
   org-modern
   org-download
   org-fragtog
   visual-fill-column
   el-easydraw # inline drawing tool
+  powerthesaurus
 
   ### extra
   rainbow-delimiters

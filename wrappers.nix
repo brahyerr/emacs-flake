@@ -40,7 +40,9 @@
     fzf
     ripgrep
     emacs-lsp-booster
-
+    global
+    universal-ctags
+    
     ###  dirvish deps
     fd
     imagemagick
