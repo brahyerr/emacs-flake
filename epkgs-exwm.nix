@@ -4,4 +4,5 @@ epkgs: with epkgs; (import ./epkgs.nix epkgs) ++ [
   pinentry
   desktop-environment
   gpastel
+  filechooser # xdg portal filechooser
 ]

@@ -10,6 +10,7 @@ epkgs: with epkgs; [
   
   ### interface
   dirvish
+  openwith
   color-theme-sanityinc-tomorrow
   color-theme-modern
   timu-caribbean-theme
