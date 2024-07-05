@@ -4,6 +4,7 @@ epkgs: with epkgs; [
   fzf
   async
   enlight # dashboard
+  grid # put data into boxes
   jinx # spellchecking
   citar # citations
   bug-hunter
@@ -17,6 +18,7 @@ epkgs: with epkgs; [
   ef-themes
   hemisu-theme
   solo-jazz-theme
+  kaolin-themes
   mood-line
   smart-mode-line
   simple-modeline

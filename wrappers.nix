@@ -38,6 +38,8 @@
 
   path = with pkgs; [
     fzf
+    ffmpeg
+    ispell
     ripgrep
     emacs-lsp-booster
     global
@@ -94,6 +96,7 @@ in {
         scrot brightnessctl playerctl  # for desktop-environment
         networkmanagerapplet  # for system tray
         pinentry-emacs
+        lemonbar-xft
       ];
     in ''
       for file in $out/bin/*; do
