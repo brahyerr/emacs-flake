@@ -37,6 +37,7 @@
   };
 
   path = with pkgs; [
+    outils # needed by packages that depend on *bsd utils, like ready-player
     fzf
     ffmpeg
     ispell

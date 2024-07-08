@@ -10,19 +10,21 @@ epkgs: with epkgs; [
   bug-hunter
   
   ### interface
+  all-the-icons
+  kind-icon # load after corfu
   dirvish
   openwith
-  color-theme-sanityinc-tomorrow
-  color-theme-modern
-  timu-caribbean-theme
+  # color-theme-sanityinc-tomorrow
+  # color-theme-modern
+  # timu-caribbean-theme
   ef-themes
-  hemisu-theme
+  # hemisu-theme
   solo-jazz-theme
   kaolin-themes
-  mood-line
-  smart-mode-line
-  simple-modeline
-  nano-modeline
+  # mood-line
+  # smart-mode-line
+  # simple-modeline
+  # nano-modeline
   mini-modeline
   doom-modeline
   doom-modeline-now-playing
