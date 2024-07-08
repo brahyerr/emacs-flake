@@ -2,10 +2,34 @@
 
 a simple emacs flake using [[https://github.com/nix-community/emacs-overlay][emacs-overlay]]
 
-If all you want is boilerplate for a reproducible config, check out the [[https://github.com/brahyerr/emacs-flake/tree/base][base]] branch.
+Has three packages:
+- Emacs with the extra packages and config wrapped together (I don't use this anymore)
+- Emacs with just the extra packages and PATH binaries wrapped
+- Emacs with packages for exwm
+  
+** Adding/editing config files 
+- You can place ~*.el~ files in =./config=.
+- Or, you can use your own config independent of this flake.
+- If you use =./config=: Nix will read the directory in lexicographical order, concatenate the contents of each config, and write all of that to an init file.
+  - So, to edit load order of config files, edit the names of the files when necessary.
+  - For example, my init file is named ~00-init.el~.
 
-** Adding external packages
-
+** Adding emacs packages
+- Packages are added by adding them in epkgs.nix.
+  - Ex.
+    #+begin_src nix
+      epkgs: with epkgs; [
+        ### Add your emacs packages here ###
+        treesit-grammars.with-all-grammars
+        ...
+      ];
+    #+end_src
+    
+- You can add packages traditionally in your elisp files as well.
+  - If you declare your packages traditionally in the =./config= directory, Nix will parse the elisp in ./config and get any packages found from Nixpkgs instead.
+  - Ex. use-package declarations in =./config= will fetch packages from Nixpkgs instead of MELPA if ~:ensure t~ is set.
+** Adding external packages to emacs's path
+If you need any extra, non-emacs packages, you can add them to your emacs's path by editing ./wrappers.nix:
 #+BEGIN_SRC nix
   emacs-wrapped = with pkgs; symlinkJoin {
     name = "emacs";
@@ -22,43 +46,8 @@ If all you want is boilerplate for a reproducible config, check out the [[https:
   };
 #+END_SRC
 
-** Adding/editing config files
-
-- ~*.el~ files should be placed in =./config/=.
-- Nix will read the directory in lexicographical order, concatenate the contents of each config, and build an init file.
-  - So, to edit load order of config files, edit the names of the files when necessary.
-  - For example, my init file is named ~00-init.el~.
-
-** Adding emacs packages
-- Packages are added either by adding them in epkgs.nix, or through use-package in an elisp file.
-- This flake has ~alwaysEnsure~ set to true, so ~:ensure t~ is not needed to be explicitly set.
-  
-  - Ex.
-    #+begin_src nix
-      epkgs: with epkgs; [
-        ### Add your emacs packages here ###
-        treesit-grammars.with-all-grammars
-        ...
-      ];
-    #+end_src
-    ... or ...
-    #+BEGIN_SRC elisp
-      (use-package magit
-        :custom
-        (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
-    #+END_SRC
-    
-- Packages are not added directly through use-package; the config is parsed with Nix first, and Nix will download the packages.
-  - Nix does not support parsing unicode characters, so make sure not to have any in your elisp config files.
-
 ** Notes and quirks
-- I set custom font faces in my config, which include upscaled versions of some fonts.
-  - I've included them in the repo, if you want to use them yourself. The rest of the fonts you will need to install through other means.
-  - Otherwise, remove the custom font settings.
-- ~lsp-mode~ is used for the Java configuration, but other configured languages use ~eglot~.
-- The ~inferior-lisp-program~ is set to ~sbcl~, but it is not included in this flake, so you need to get it on your own.
-- I'm new to emacs, so some questionable stuff is to be expected. :^)
+- You should probably not use the config I have here. It isn't plug-n-play, is just patchwerk of other configs, and I don't use it anymore anyways. Honestly, I don't even want to look at the elisp. It is just left here as an example.
 
 ** Credits
 - Parts of the configs were taken from [[https://git.sr.ht/~ashton314/emacs-bedrock][emacs-bedrock]], and the System Crafters Emacs From Scratch video series helped a lot.
-- Fonts were taken from [[https://github.com/slavfox/Cozette][slavfox/cozette]] and [[https://github.com/cmvnd/fonts][cmvnd/fonts]].
