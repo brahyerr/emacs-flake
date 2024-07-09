@@ -28,6 +28,7 @@ epkgs: with epkgs; [
   mini-modeline
   doom-modeline
   doom-modeline-now-playing
+  telephone-line
   mini-echo
 
   ### development
@@ -37,6 +38,8 @@ epkgs: with epkgs; [
   dumb-jump
   envrc
   magit
+  forge
+  consult-gh
   flycheck
 
   ### completion framework
