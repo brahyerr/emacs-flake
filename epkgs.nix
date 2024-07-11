@@ -8,6 +8,8 @@ epkgs: with epkgs; [
   jinx # spellchecking
   citar # citations
   bug-hunter
+  vundo
+  casual-ibuffer
   
   ### interface
   all-the-icons
@@ -21,6 +23,8 @@ epkgs: with epkgs; [
   # hemisu-theme
   solo-jazz-theme
   kaolin-themes
+  material-theme
+  spacious-padding
   # mood-line
   # smart-mode-line
   # simple-modeline
@@ -28,7 +32,9 @@ epkgs: with epkgs; [
   mini-modeline
   doom-modeline
   doom-modeline-now-playing
-  telephone-line
+  moody
+  minions
+  # telephone-line
   mini-echo
 
   ### development
@@ -40,7 +46,7 @@ epkgs: with epkgs; [
   magit
   forge
   consult-gh
-  flycheck
+  # flycheck
 
   ### completion framework
   vertico
