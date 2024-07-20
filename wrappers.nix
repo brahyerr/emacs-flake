@@ -70,7 +70,7 @@ in {
       for file in $out/bin/*; do
         wrapProgram $file \
           --prefix PATH : ${lib.makeBinPath path} \
-          --set-default ASPELL_CONF=dict-dir ${aspellWithDicts (dicts: with dicts; [ fr en en-computers ])}/lib/aspell
+          --set-default ASPELL_CONF "dict-dir ${aspellWithDicts (dicts: with dicts; [ fr en en-computers ])}/lib/aspell;"
       done
     '';
   };
@@ -84,7 +84,7 @@ in {
       for file in $out/bin/*; do
         wrapProgram $file \
           --prefix PATH : ${lib.makeBinPath path} \
-          --set-default ASPELL_CONF=dict-dir ${aspellWithDicts (dicts: with dicts; [ fr en en-computers ])}/lib/aspell
+          --set-default ASPELL_CONF "dict-dir ${aspellWithDicts (dicts: with dicts; [ fr en en-computers ])}/lib/aspell;"
       done
     '';
   };
@@ -103,7 +103,7 @@ in {
       for file in $out/bin/*; do
         wrapProgram $file \
           --prefix PATH : ${lib.makeBinPath (path ++ extraPath)} \
-          --set-default ASPELL_CONF=dict-dir ${aspellWithDicts (dicts: with dicts; [ fr en en-computers ])}/lib/aspell
+          --set-default ASPELL_CONF "dict-dir ${aspellWithDicts (dicts: with dicts; [ fr en en-computers ])}/lib/aspell;"
       done
     '';
   };
