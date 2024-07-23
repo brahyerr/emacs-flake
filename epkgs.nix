@@ -110,4 +110,5 @@ epkgs: with epkgs; [
   ement # matrix client
   mpv
   emms
+  ednc  # desktop notifications
 ]
