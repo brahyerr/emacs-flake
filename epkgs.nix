@@ -109,6 +109,7 @@ epkgs: with epkgs; [
   pdf-tools
   ement # matrix client
   circe # irc
+  circe-notifications
   mpv
   emms
   ednc  # desktop notifications
