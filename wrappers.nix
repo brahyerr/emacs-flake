@@ -40,6 +40,7 @@
     outils # needed by packages that depend on *bsd utils, like ready-player
     fzf
     ffmpeg
+    imagemagick
     ispell
     ripgrep
     emacs-lsp-booster

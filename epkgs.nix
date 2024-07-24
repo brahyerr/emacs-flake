@@ -108,6 +108,7 @@ epkgs: with epkgs; [
   command-log-mode
   pdf-tools
   ement # matrix client
+  circe # irc
   mpv
   emms
   ednc  # desktop notifications
