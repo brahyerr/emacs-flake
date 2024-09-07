@@ -29,6 +29,7 @@ epkgs: with epkgs; [
   # smart-mode-line
   # simple-modeline
   # nano-modeline
+  minimap
   mini-modeline
   doom-modeline
   doom-modeline-now-playing
