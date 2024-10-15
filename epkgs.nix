@@ -101,7 +101,7 @@ epkgs: with epkgs; [
   org-download
   org-fragtog
   visual-fill-column
-  el-easydraw # inline drawing tool
+  # el-easydraw # inline drawing tool
   powerthesaurus
 
   ### extra
