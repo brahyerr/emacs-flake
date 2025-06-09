@@ -9,7 +9,7 @@ epkgs: with epkgs; [
   citar # citations
   bug-hunter
   vundo
-  casual-ibuffer
+  # casual-ibuffer
   
   ### interface
   all-the-icons
